@@ -27,8 +27,8 @@
     display: block;
     margin: 0 auto;
     opacity: 0;
-    transform: translateY(12px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    transform: translateY(10px);
+    transition: opacity 0.8s ease, transform 0.8s ease 0.15s;
 }
 
 .about-image.show {
@@ -67,7 +67,7 @@
     height: 3px;
     background: linear-gradient(to right, #7499FF, #5a7ce6);
     border-radius: 2px;
-    transition: transform 0.8s ease;
+    transition: transform 0.8s ease 0.15s;
 }
 
 

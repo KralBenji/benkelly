@@ -65,6 +65,16 @@ window.addEventListener("load", () => {
 const hero = document.querySelector(".hero");
 const heroTitle = document.querySelector(".hero-title");
 
+// Ensure underline is fully expanded after load animation finishes
+window.addEventListener("load", () => {
+    setTimeout(() => {
+
+        // Remove animation so it stops controlling transform
+        heroTitle.classList.add("shrink-control");
+
+    }, 1100); // after hero animation completes
+});
+
 window.addEventListener("scroll", () => {
     requestAnimationFrame(() => {
 
@@ -85,6 +95,12 @@ window.addEventListener("scroll", () => {
 
         heroTitle.style.transform =
             `translateY(${baseOffset + parallaxAmount}px)`;
+
+        // Underline shrink on scroll
+        const scrollProgress = Math.min(scrollY / (heroHeight * 0.6), 1);
+        const shrinkAmount = 1 - scrollProgress;
+
+        heroTitle.style.setProperty("--line-scale", shrinkAmount);
 
     });
 });

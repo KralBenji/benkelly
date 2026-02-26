@@ -65,10 +65,18 @@
     background: linear-gradient(to right, #7499FF, #5a7ce6);
     transform: scaleX(0);
     transform-origin: center;
-    animation: heroLineExpand 0.6s ease forwards;
+    animation: heroLineExpand 0.8s ease 0.15s forwards;
+}
+
+.hero-title.shrink-control::after {
+    animation: none;
+    transform: scaleX(var(--line-scale, 1));
 }
 
 @keyframes heroLineExpand {
+    from {
+        transform: scaleX(0);
+    }
     to {
         transform: scaleX(1);
     }
