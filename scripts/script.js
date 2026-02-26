@@ -60,3 +60,31 @@ window.addEventListener("load", () => {
         image.classList.add("show");
     });
 });
+
+// Animate hero title with parallax effect on scroll
+const hero = document.querySelector(".hero");
+const heroTitle = document.querySelector(".hero-title");
+
+window.addEventListener("scroll", () => {
+    requestAnimationFrame(() => {
+
+        const scrollY = window.scrollY;
+        const heroHeight = hero.offsetHeight;
+
+        const baseOffset = 15;
+        const strength = 0.35;
+
+        // Calculate movement
+        let parallaxAmount = scrollY * strength;
+
+        // Maximum movement allowed (hero height minus some buffer)
+        const maxMovement = heroHeight * 0.6;
+
+        // Clamp so it never exceeds max
+        parallaxAmount = Math.min(parallaxAmount, maxMovement);
+
+        heroTitle.style.transform =
+            `translateY(${baseOffset + parallaxAmount}px)`;
+
+    });
+});
