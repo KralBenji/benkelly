@@ -3,14 +3,14 @@
 ========================== */
 
 #about {
-    padding: 4rem 1.5rem;
+    padding: 2.5rem 1rem;
 }
 
 .about-container {
     display: flex;
     flex-direction: column;
     /* Mobile stack */
-    gap: 2.5rem;
+    gap: 1.5rem;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -21,30 +21,70 @@
 
 .about-image {
     width: 100%;
-    max-width: 100%;
+    max-width: 85%;
     height: auto;
     border-radius: 12px;
     display: block;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.about-image.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .about-content {
     display: flex;
     flex-direction: column;
-    gap: 1.75rem;
+    gap: 1rem;
+    text-align: center;
 }
 
 .about-content h2 {
-    font-size: 1.9rem;
+    font-size: 1.75rem;
     line-height: 1.2;
+    letter-spacing: 1px;
+    text-align: center;
+    margin: 0;
+    position: relative;
+    display: inline-block;
+}
+
+
+/* Clean & Professional Accent Underline */
+
+.about-content h2::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -6px;
+    transform: translateX(-50%) scaleX(0);
+    transform-origin: right;
+    width: 50%;
+    height: 3px;
+    background: linear-gradient(to right, #7499FF, #5a7ce6);
+    border-radius: 2px;
+    transition: transform 0.8s ease;
+}
+
+
+/* Animate underline on scroll into view */
+
+.about-content h2.animate::after {
+    transform: translateX(-50%) scaleX(1);
 }
 
 .about-text {
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 1rem;
 }
 
 .about-text p {
+    margin-bottom: 0.75rem;
     font-size: 1rem;
     line-height: 1.7;
 }
@@ -56,23 +96,43 @@
 
 .social-icons {
     display: flex;
-    gap: 20px;
+    gap: 15px;
     align-items: center;
     flex-wrap: wrap;
-    margin-top: 10px;
+    margin-top: 0.25rem;
 }
 
 .social-icons img {
     width: 40px;
-    /* Slightly reduced from 50 for better balance */
     height: 40px;
-    transition: transform 0.3s ease, filter 0.3s ease;
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.5s ease, transform 0.5s ease, filter 0.3s ease;
     cursor: pointer;
+    will-change: transform, opacity;
 }
 
+
+/* When revealed */
+
+.social-icons img.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* Desktop hover */
+
 .social-icons a:hover img {
-    transform: scale(1.2);
+    transform: translateY(-4px) scale(1.15);
     filter: brightness(0) saturate(100%) invert(59%) sepia(15%) saturate(1733%) hue-rotate(196deg) brightness(92%) contrast(92%);
+}
+
+
+/* Mobile tap feedback */
+
+.social-icons a:active img {
+    transform: scale(0.88);
 }
 
 
