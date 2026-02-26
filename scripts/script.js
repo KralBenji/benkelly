@@ -52,7 +52,7 @@ const iconObserver = new IntersectionObserver((entries, observer) => {
 
 icons.forEach(icon => iconObserver.observe(icon));
 
-// Animate about image on scroll into view
+// Animate about image on load
 window.addEventListener("load", () => {
     const image = document.querySelector(".about-image");
 
