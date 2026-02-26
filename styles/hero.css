@@ -1,0 +1,64 @@
+/* ==========================
+   Cinematic Banner
+========================== */
+
+.hero {
+    position: relative;
+    height: 40vh;
+    min-height: 260px;
+    overflow: hidden;
+}
+
+
+/* Background Image */
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+/* Dark cinematic overlay */
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.2));
+}
+
+
+/* Text container */
+
+.hero-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    transform: translateY(15px);
+}
+
+
+/* Cinematic Title */
+
+.hero-content h1 {
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 6px 25px rgba(0, 0, 0, 0.35);
+}
+
+.hero-content h1::after {
+    content: "";
+    display: block;
+    width: 240px;
+    height: 3px;
+    background: linear-gradient(to right, #7499FF, #5a7ce6);
+    margin: 16px auto 0;
+}
