@@ -1,5 +1,27 @@
 /* ==========================
-   Font Faces
+   Design Tokens
+========================== */
+
+:root {
+    /* Spacing Scale (8px system - like minecraft or computers) */
+    --space-xxs: 4px;
+    --space-xs: 8px;
+    --space-sm: 16px;
+    --space-md: 24px;
+    --space-lg: 32px;
+    --space-xl: 48px;
+    --space-2xl: 64px;
+    --space-3xl: 96px;
+    /* Future additions for the site:
+       --color-primary:
+       --font-scale:
+       --radius-md:
+    */
+}
+
+
+/* ==========================
+   Font Faces :D
 ========================== */
 
 @font-face {
@@ -58,20 +80,7 @@
 
 
 /* ==========================
-   Global Reset
-========================== */
-
-*,
-*::before,
-*::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-
-/* ==========================
-   Base Typography
+   Base Typography (No acid)
 ========================== */
 
 body {
@@ -84,7 +93,7 @@ body {
 h1,
 h2 {
     text-transform: uppercase;
-    margin: 0.5em 0;
+    margin: var(--space-sm) 0;
 }
 
 h1 {
@@ -98,5 +107,10 @@ h2 {
 }
 
 p {
-    margin-bottom: 1em;
+    margin-bottom: var(--space-sm);
+}
+
+img {
+    max-width: 100%;
+    display: block;
 }
