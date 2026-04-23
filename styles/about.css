@@ -3,191 +3,192 @@
 ========================== */
 
 #about {
-    padding: var(--space-xl) var(--space-sm);
+  padding: var(--space-xl) var(--space-sm);
 }
 
 .about-container {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-md);
-    max-width: 1200px;
-    margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .about-media {
-    width: 100%;
+  width: 100%;
 }
 
 .about-image {
-    width: 100%;
-    max-width: 85%;
-    height: auto;
-    border-radius: var(--space-xs);
-    display: block;
-    margin: 0 auto;
-    opacity: 0;
-    transform: translateY(var(--space-xs));
-    transition: opacity 0.8s ease, transform 0.8s ease 0.15s;
+  width: 100%;
+  max-width: 85%;
+  height: auto;
+  border-radius: var(--space-xs);
+  display: block;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(var(--space-xs));
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease 0.15s;
 }
 
 .about-image.show {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .about-content {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-sm);
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  text-align: center;
 }
 
 .about-content h2 {
-    font-size: 1.75rem;
-    line-height: 1.2;
-    letter-spacing: 1px;
-    margin: 0;
-    position: relative;
-    display: inline-block;
+  font-size: 1.75rem;
+  line-height: 1.2;
+  letter-spacing: 1px;
+  margin: 0;
+  position: relative;
+  display: inline-block;
 }
-
 
 /* Accent Underline */
 
 .about-content h2::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: calc(-1 * var(--space-xs));
-    transform: translateX(-50%) scaleX(0);
-    transform-origin: right;
-    width: 50%;
-    height: 3px;
-    background: linear-gradient(to right, #7499FF, #5a7ce6);
-    border-radius: 2px;
-    transition: transform 0.8s ease 0.15s;
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: calc(-1 * var(--space-xs));
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: right;
+  width: 50%;
+  height: 3px;
+  background: linear-gradient(to right, #7499ff, #5a7ce6);
+  border-radius: 2px;
+  transition: transform 0.8s ease 0.15s;
 }
 
 .about-content h2.animate::after {
-    transform: translateX(-50%) scaleX(1);
+  transform: translateX(-50%) scaleX(1);
 }
 
 .about-text {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
 }
 
 .about-text p {
-    font-size: 1rem;
-    line-height: 1.7;
+  font-size: 1rem;
+  line-height: 1.7;
 }
-
 
 /* ==========================
    Social Icons
 ========================== */
 
 .social-icons {
-    display: flex;
-    align-items: center;
-    gap: var(--space-sm);
-    flex-wrap: wrap;
-    margin-top: var(--space-xxs);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-top: var(--space-xxs);
 }
 
 .social-icons img {
-    width: 40px;
-    height: 40px;
-    opacity: 0;
-    transform: translateY(var(--space-sm));
-    transition: opacity 0.5s ease, transform 0.5s ease, filter 0.3s ease;
-    cursor: pointer;
-    will-change: transform, opacity;
+  width: 40px;
+  height: 40px;
+  opacity: 0;
+  transform: translateY(var(--space-sm));
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease,
+    filter 0.3s ease;
+  cursor: pointer;
+  will-change: transform, opacity;
 }
 
 .social-icons img.show {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .social-icons a:hover img {
-    transform: translateY(-4px) scale(1.15);
-    filter: brightness(0) saturate(100%) invert(59%) sepia(15%) saturate(1733%) hue-rotate(196deg) brightness(92%) contrast(92%);
+  transform: translateY(-4px) scale(1.15);
+  filter: brightness(0) saturate(100%) invert(59%) sepia(15%) saturate(1733%)
+    hue-rotate(196deg) brightness(92%) contrast(92%);
 }
 
 .social-icons a:active img {
-    transform: scale(0.88);
+  transform: scale(0.88);
 }
-
 
 /* ==========================
    Small Screens (≤480px)
 ========================== */
 
 @media (max-width: 480px) {
-    .social-icons {
-        justify-content: center;
-        gap: 15px;
-    }
+  .social-icons {
+    justify-content: center;
+    gap: 15px;
+  }
 }
-
 
 /* ==========================
    Tablet (481px–767px)
 ========================== */
 
 @media (min-width: 481px) and (max-width: 767px) {
-    .about-container {
-        align-items: center;
-    }
-    .about-image {
-        max-width: 100%;
-    }
-    .about-content {
-        width: 100%;
-        align-items: center;
-    }
-    .about-text,
-    .social-icons,
-    .about-content h2 {
-        max-width: 500px;
-        width: 100%;
-    }
-    .social-icons {
-        justify-content: center;
-        margin-top: 1.5rem;
-    }
+  .about-container {
+    align-items: center;
+  }
+  .about-image {
+    max-width: 100%;
+  }
+  .about-content {
+    width: 100%;
+    align-items: center;
+  }
+  .about-text,
+  .social-icons,
+  .about-content h2 {
+    max-width: 500px;
+    width: 100%;
+  }
+  .social-icons {
+    justify-content: center;
+    margin-top: 1.5rem;
+  }
 }
-
 
 /* ==========================
    Desktop (≥768px)
 ========================== */
 
 @media (min-width: 768px) {
-    #about {
-        padding: var(--space-2xl) var(--space-sm);
-    }
-    .about-container {
-        flex-direction: row;
-        align-items: center;
-        gap: var(--space-2xl);
-    }
-    .about-media {
-        width: 45%;
-    }
-    .about-content {
-        width: 55%;
-        align-items: center;
-    }
-    .about-text,
-    .social-icons {
-        max-width: 500px;
-    }
-    .social-icons {
-        justify-content: center;
-        flex-wrap: nowrap;
-        margin-top: 1.5rem;
-    }
+  #about {
+    padding: var(--space-2xl) var(--space-sm);
+  }
+  .about-container {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-2xl);
+  }
+  .about-media {
+    width: 45%;
+  }
+  .about-content {
+    width: 55%;
+    align-items: center;
+  }
+  .about-text,
+  .social-icons {
+    max-width: 500px;
+  }
+  .social-icons {
+    justify-content: center;
+    flex-wrap: nowrap;
+    margin-top: 1.5rem;
+  }
 }
