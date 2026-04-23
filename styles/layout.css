@@ -2,191 +2,179 @@
    Layout - Mobile First
 ========================== */
 
-
 /* ==========================
    Container
 ========================== */
 
 .container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 var(--space-sm);
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-sm);
 }
-
 
 /* ==========================
    Header (Over Hero)
 ========================== */
 
 header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
-
 
 /* ==========================
    Navigation
 ========================== */
 
 nav {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 4000;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 4000;
 }
-
 
 /* ==========================
    Hamburger Button
 ========================== */
 
 .hamburger {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 35px;
-    height: 28px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    z-index: 5000;
-    /* ALWAYS on top */
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 35px;
+  height: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 5000;
+  /* ALWAYS on top */
 }
-
 
 /* Hamburger Bars */
 
 .hamburger span {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background-color: white;
-    border-radius: 2px;
-    transition: all 0.3s ease;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
 }
-
 
 /* Position Each Bar */
 
 .hamburger span:nth-child(1) {
-    top: 0;
+  top: 0;
 }
 
 .hamburger span:nth-child(2) {
-    top: 12px;
+  top: 12px;
 }
 
 .hamburger span:nth-child(3) {
-    bottom: 0;
+  bottom: 0;
 }
-
 
 /* ==========================
    Animate Into X
 ========================== */
 
 .hamburger.active span:nth-child(1) {
-    top: 12px;
-    transform: rotate(45deg);
+  top: 12px;
+  transform: rotate(45deg);
 }
 
 .hamburger.active span:nth-child(2) {
-    opacity: 0;
+  opacity: 0;
 }
 
 .hamburger.active span:nth-child(3) {
-    top: 12px;
-    transform: rotate(-45deg);
+  top: 12px;
+  transform: rotate(-45deg);
 }
-
 
 /* Hover Accent */
 
 .hamburger:hover span {
-    background-color: #7499FF;
+  background-color: #7499ff;
 }
-
 
 /* ==========================
    Slide Navigation Panel
 ========================== */
 
 .nav-panel {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 300px;
-    height: 100vh;
-    background-color: #111;
-    display: flex;
-    flex-direction: column;
-    padding-top: 120px;
-    list-style: none;
-    margin: 0;
-    transition: right 0.35s ease;
-    z-index: 4000;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 300px;
+  height: 100vh;
+  background-color: #111;
+  display: flex;
+  flex-direction: column;
+  padding-top: 120px;
+  list-style: none;
+  margin: 0;
+  transition: right 0.35s ease;
+  z-index: 4000;
 }
 
 .nav-panel.active {
-    right: 0;
+  right: 0;
 }
-
 
 /* Nav Links */
 
 .nav-panel li {
-    margin: 0;
+  margin: 0;
 }
 
 .nav-panel a {
-    display: block;
-    padding: 20px 40px;
-    color: white;
-    text-decoration: none;
-    font-size: 1.1rem;
-    transition: color 0.3s ease;
+  display: block;
+  padding: 20px 40px;
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
 }
 
 .nav-panel a:hover {
-    color: #7499FF;
+  color: #7499ff;
 }
-
 
 /* ==========================
    Background Overlay
 ========================== */
 
 .nav-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.6);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-    z-index: 3000;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 3000;
 }
 
 .nav-overlay.active {
-    opacity: 1;
-    pointer-events: auto;
+  opacity: 1;
+  pointer-events: auto;
 }
-
 
 /* ==========================
    Scroll Lock
 ========================== */
 
 .no-scroll {
-    height: 100vh;
-    overflow: hidden;
+  height: 100vh;
+  overflow: hidden;
 }
 
 html,
 body {
-    overflow-x: hidden;
+  overflow-x: hidden;
 }
