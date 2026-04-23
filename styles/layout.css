@@ -178,3 +178,11 @@ html,
 body {
   overflow-x: hidden;
 }
+
+/* ==========================
+   Footer
+========================== */
+
+footer {
+  text-align: center;
+}
