@@ -36,7 +36,7 @@ function showSlide(slideshowIndex, slideIndex) {
     dot.classList.remove("active");
   });
 
-  slides[slideshow.currentIndex].style.display = "block";
+  slides[slideshow.currentIndex].style.display = "flex";
 
   if (dots[slideshow.currentIndex]) {
     dots[slideshow.currentIndex].classList.add("active");
