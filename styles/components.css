@@ -145,14 +145,14 @@ nav {
   margin: 0 auto;
   position: relative;
   text-align: center;
-  min-height: 400px;
+  min-height: 360px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   border-radius: 14px;
-  overflow: hidden;
+  overflow: visible;
   background-color: #f8f8f8;
   box-shadow:
     0 4px 12px rgba(0, 0, 0, 0.04),
@@ -164,14 +164,9 @@ nav {
   width: 100%;
 }
 
-.graphics-slideshow .slide {
-  align-items: center;
-  justify-content: center;
-}
-
 .slide img {
   max-width: 100%;
-  max-height: 500px;
+  max-height: 420px;
   width: auto;
   height: auto;
   display: block;
@@ -179,55 +174,83 @@ nav {
   object-fit: contain;
 }
 
-.graphics-slideshow img {
-  max-height: 500px;
-}
-
-/* Stable gallery stage for mixed graphic design aspect ratios */
+/* Graphic design needs a stable stage because the images use mixed aspect ratios */
 .graphics-slideshow {
-  min-height: 500px;
+  min-height: 380px;
   padding: var(--space-md);
-  background-color: #f8f8f8;
 }
 
-/* Keeps each graphic centered inside the stable stage */
+.graphics-slideshow .slide {
+  align-items: center;
+  justify-content: center;
+}
+
 .graphics-slideshow .slide img {
-  max-height: 460px;
+  max-height: 340px;
   object-fit: contain;
 }
 
 .web-slideshow img {
-  max-height: 600px;
+  max-height: 520px;
   border-radius: 4px;
 }
 
+/* Slideshow arrow buttons */
 .prev,
 .next {
   cursor: pointer;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  padding: 16px;
-  color: #000;
+
+  width: 38px;
+  height: 38px;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #111;
+  background-color: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 50%;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+
   font-weight: bold;
-  font-size: 1.5rem;
-  transition: background-color 0.3s ease;
+  font-size: 1.25rem;
+  text-decoration: none;
   user-select: none;
-  z-index: 2;
+  z-index: 10;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background-color 0.25s ease;
 }
 
+/* Mobile: keep controls inside the slideshow so they do not run off screen */
 .prev {
-  left: 0;
+  left: var(--space-xs);
 }
 
 .next {
-  right: 0;
+  right: var(--space-xs);
 }
 
 .prev:hover,
 .next:hover {
-  background-color: rgba(90, 124, 230, 0.8);
+  background-color: #fff;
+  transform: translateY(-50%) scale(1.08);
+  box-shadow:
+    0 10px 26px rgba(0, 0, 0, 0.25),
+    0 0 0 4px rgba(116, 153, 255, 0.15);
 }
+
+/* ==========================
+   4. COMPONENT: Slideshow Text + Indicators
+========================== */
 
 .text {
   color: #f2f2f2;
@@ -271,7 +294,7 @@ nav {
 }
 
 /* ==========================
-   4. COMPONENT: Animations
+   5. COMPONENT: Animations
 ========================== */
 
 .fade {
@@ -289,7 +312,7 @@ nav {
 }
 
 /* ==========================
-   5. COMPONENT: Responsive Adjustments
+   6. COMPONENT: Tablet Adjustments
 ========================== */
 
 @media (min-width: 768px) {
@@ -297,10 +320,42 @@ nav {
     min-height: 450px;
   }
 
+  .slide img {
+    max-height: 500px;
+  }
+
   .graphics-slideshow {
     min-height: 500px;
   }
+
+  .graphics-slideshow .slide img {
+    max-height: 460px;
+  }
+
+  .web-slideshow img {
+    max-height: 600px;
+  }
+
+  /* Tablet+ : move controls outside the image, but still inside the service card */
+  .prev,
+  .next {
+    width: 44px;
+    height: 44px;
+    font-size: 1.4rem;
+  }
+
+  .prev {
+    left: -20px;
+  }
+
+  .next {
+    right: -20px;
+  }
 }
+
+/* ==========================
+   7. COMPONENT: Desktop Adjustments
+========================== */
 
 @media (min-width: 1024px) {
   .slideshow-container {
