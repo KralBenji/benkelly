@@ -9,7 +9,7 @@
 .services-container {
   display: flex;
   flex-direction: column;
-  gap: var(--space-lg);
+  gap: var(--space-xl);
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -66,20 +66,70 @@
   margin: 0;
 }
 
+/* Subtle accent divider to visually anchor section headings and improve hierarchy */
+#graphic-design h3::after,
+#web-design h3::after,
+#sound-design h3::after {
+  content: "";
+  display: block;
+  width: 25%;
+  height: 2px;
+  margin: 10px auto 0;
+
+  background: linear-gradient(to right, var(--color-accent), var(--color-accent-dark));
+
+  border-radius: 2px;
+  opacity: 0.8;
+}
+
 /* ==========================
-   4. SECTION INTRO TEXT
+   4. SERVICE CARD
+========================== */
+
+.service-block {
+  background-color: #fff;
+  border-radius: 16px;
+  padding: var(--space-lg);
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.04),
+    0 8px 20px rgba(0, 0, 0, 0.06),
+    0 20px 40px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+@media (hover: hover) {
+  .service-block:hover {
+    transform: translateY(-6px);
+    box-shadow:
+      0 6px 14px rgba(0, 0, 0, 0.06),
+      0 14px 35px rgba(0, 0, 0, 0.1),
+      0 30px 60px rgba(0, 0, 0, 0.14);
+  }
+}
+
+/* ==========================
+   5. SECTION INTRO TEXT
 ========================== */
 
 .section-intro {
   text-align: center;
   max-width: 600px;
   margin: 0 auto;
+
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: 1.6;
+
+  /* Slightly muted text color (65% black) to create visual hierarchy 
+   so headings stand out more than supporting text */
+  color: rgba(0, 0, 0, 0.65);
+
+  /* opacity: 0.7; 👈 subtle but powerful, muted text. Use color OR opacity, not both */
 }
 
 /* ==========================
-   5. SLIDESHOW SIZING
+   6. SLIDESHOW SIZING
 ========================== */
 
 .web-slideshow {
@@ -91,7 +141,7 @@
 }
 
 /* ==========================
-   6. SOUND DESIGN
+   7. SOUND DESIGN
 ========================== */
 
 .audio-projects {
@@ -108,8 +158,32 @@
   padding: var(--space-md);
   background-color: #fff;
   border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+  /* slightly lighter than service cards for hierarchy */
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.04),
+    0 10px 24px rgba(0, 0, 0, 0.06);
+
+  border: 1px solid rgba(0, 0, 0, 0.05);
+
   text-align: left;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+@media (hover: hover) {
+  .audio-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+      0 10px 24px rgba(0, 0, 0, 0.08),
+      0 18px 40px rgba(0, 0, 0, 0.12);
+
+    border-color: rgba(0, 0, 0, 0.08);
+  }
 }
 
 .audio-info h4 {
@@ -127,10 +201,18 @@
 }
 
 /* ==========================
-   7. TABLET / DESKTOP
+   8. TABLET / DESKTOP
 ========================== */
 
 @media (min-width: 768px) {
+  #services {
+    padding: var(--space-2xl) var(--space-sm);
+  }
+
+  .services-container {
+    gap: var(--space-2xl);
+  }
+
   .services-container h2 {
     font-size: 2rem;
   }
