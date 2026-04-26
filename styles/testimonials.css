@@ -1,0 +1,163 @@
+/* ==========================
+   Testimonials Section - Mobile First
+========================== */
+
+/* ==========================
+   1. SECTION LAYOUT
+========================== */
+
+.testimonials-section {
+  padding: var(--space-xl) var(--space-sm);
+  text-align: center;
+}
+
+.testimonials-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.testimonials-inner h2 {
+  font-size: 1.75rem;
+  line-height: 1.2;
+  letter-spacing: 1px;
+  margin: 0 auto;
+  position: relative;
+  display: inline-block;
+}
+
+/* Animated underline */
+
+.testimonials-inner h2::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: calc(-1 * var(--space-xs));
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: right;
+  width: 50%;
+  height: 3px;
+  background: linear-gradient(to right, var(--color-accent), var(--color-accent-dark));
+  border-radius: 2px;
+  transition: transform 0.8s ease 0.15s;
+}
+
+.testimonials-inner h2.animate::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+/* ==========================
+   2. GRID STRUCTURE
+========================== */
+
+.testimonials-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  margin-top: var(--space-xl);
+}
+
+.testimonial-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+  align-items: center;
+}
+
+/* ==========================
+   3. IMAGES
+========================== */
+
+.testimonial-image {
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+  border-radius: 10px;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+.testimonial-image.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================
+   4. TEXT CONTENT
+========================== */
+
+.testimonial-text {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.testimonial-text p {
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.testimonial-text h3 {
+  margin-top: var(--space-sm);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+/* ==========================
+   5. MOBILE OPTIMIZATION
+========================== */
+
+@media (max-width: 767px) {
+  .testimonials-grid {
+    gap: var(--space-xl);
+  }
+
+  .testimonial-row {
+    gap: var(--space-sm);
+  }
+
+  .testimonial-image {
+    max-width: 260px;
+  }
+}
+
+/* ==========================
+   6. DESKTOP CHECKERBOARD
+========================== */
+
+@media (min-width: 768px) {
+  .testimonials-section {
+    padding: var(--space-2xl) var(--space-sm);
+  }
+
+  .testimonials-inner h2 {
+    font-size: 2rem;
+  }
+
+  .testimonials-grid {
+    gap: var(--space-2xl);
+  }
+
+  .testimonial-row {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+  }
+
+  .testimonial-row-reverse .testimonial-image {
+    order: 2;
+  }
+
+  .testimonial-row-reverse .testimonial-text {
+    order: 1;
+  }
+
+  .testimonial-image {
+    max-width: 400px;
+  }
+}

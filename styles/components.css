@@ -1,40 +1,124 @@
-* {
-  box-sizing: border-box;
+/* ==========================
+   1. COMPONENT: Navigation
+========================== */
+
+nav {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 4000;
+}
+
+.hamburger {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 35px;
+  height: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 5000;
+}
+
+.hamburger span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.hamburger span:nth-child(1) {
+  top: 0;
+}
+
+.hamburger span:nth-child(2) {
+  top: 12px;
+}
+
+.hamburger span:nth-child(3) {
+  bottom: 0;
+}
+
+.hamburger.active span:nth-child(1) {
+  top: 12px;
+  transform: rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  top: 12px;
+  transform: rotate(-45deg);
+}
+
+.hamburger:hover span {
+  background-color: var(--color-accent);
+}
+
+.nav-panel {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 300px;
+  height: 100vh;
+  background-color: #111;
+  display: flex;
+  flex-direction: column;
+  padding-top: 120px;
+  list-style: none;
+  margin: 0;
+  transition: right 0.35s ease;
+  z-index: 4000;
+}
+
+.nav-panel.active {
+  right: 0;
+}
+
+.nav-panel a {
+  display: block;
+  padding: 20px 40px;
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-panel a:hover {
+  color: var(--color-accent);
+}
+
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 3000;
+}
+
+.nav-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 /* ==========================
-   Services - Mobile First
+   2. COMPONENT: Accent Heading
 ========================== */
 
-#services {
-  padding: var(--space-xl) var(--space-sm);
-}
-
-.services-container {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.services-container h2 {
-  font-size: 1.75rem;
-  line-height: 1.2;
-  letter-spacing: 1px;
-  margin: 0;
+.accent-heading {
   position: relative;
   display: inline-block;
 }
 
-/* Center headings */
-h2,
-h3 {
-  text-align: center;
-}
-
-/* Animated underline */
-.services-container h2::after {
+.accent-heading::after {
   content: "";
   position: absolute;
   left: 50%;
@@ -43,70 +127,53 @@ h3 {
   transform-origin: right;
   width: 50%;
   height: 3px;
-  background: linear-gradient(to right, #7499ff, #5a7ce6);
+  background: linear-gradient(to right, var(--color-accent), var(--color-accent-dark));
   border-radius: 2px;
   transition: transform 0.8s ease 0.15s;
 }
 
-.services-container h2.animate::after {
+.accent-heading.animate::after {
   transform: translateX(-50%) scaleX(1);
 }
 
 /* ==========================
-   Slideshow (FINAL FIX)
+   3. COMPONENT: Slideshow
 ========================== */
 
-.graphicslides-container,
-.webslides-container {
+.slideshow-container {
   width: 100%;
-  max-width: 750px;
   margin: 0 auto;
   position: relative;
-
-  /* stable height */
-  min-height: 400px;
-
   text-align: center;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Tablet */
-@media (min-width: 768px) {
-  .graphicslides-container,
-  .webslides-container {
-    min-height: 450px;
-  }
-}
-
-/* Desktop */
-@media (min-width: 1024px) {
-  .graphicslides-container,
-  .webslides-container {
-    min-height: 500px;
-  }
-}
-
-/* Slides */
-.graphicSlides,
-.webSlides {
+.slide {
   display: none;
+  width: 100%;
 }
 
-/* Images (NO cropping, properly centered) */
-.graphicSlides img,
-.webSlides img {
+.slide img {
   max-width: 100%;
   max-height: 500px;
-
   width: auto;
   height: auto;
-
   display: block;
   margin: 0 auto;
+  object-fit: contain;
 }
 
-/* ==========================
-   Controls
-========================== */
+.graphics-slideshow img {
+  max-height: 500px;
+}
+
+.web-slideshow img {
+  max-height: 600px;
+  border-radius: 4px;
+}
 
 .prev,
 .next {
@@ -115,14 +182,14 @@ h3 {
   top: 50%;
   transform: translateY(-50%);
   padding: 16px;
-  color: rgb(0, 0, 0);
+  color: #000;
   font-weight: bold;
-  font-size: 18px;
-  transition: 0.3s ease;
+  font-size: 1.5rem;
+  transition: background-color 0.3s ease;
   user-select: none;
+  z-index: 2;
 }
 
-/* Position buttons */
 .prev {
   left: 0;
 }
@@ -131,20 +198,14 @@ h3 {
   right: 0;
 }
 
-/* Hover effect */
 .prev:hover,
 .next:hover {
   background-color: rgba(90, 124, 230, 0.8);
 }
 
-/* ==========================
-   Text + Indicators
-========================== */
-
-/* Caption text */
 .text {
   color: #f2f2f2;
-  font-size: 15px;
+  font-size: 0.95rem;
   padding: 8px 12px;
   position: absolute;
   bottom: 8px;
@@ -152,16 +213,21 @@ h3 {
   text-align: center;
 }
 
-/* Number text */
 .numbertext {
   color: #f2f2f2;
-  font-size: 12px;
+  background-color: rgba(0, 0, 0, 0.45);
+  font-size: 0.8rem;
   padding: 8px 12px;
   position: absolute;
   top: 0;
+  left: 0;
+  z-index: 2;
 }
 
-/* Dots */
+.dots-container {
+  text-align: center;
+}
+
 .dot {
   cursor: pointer;
   height: 12px;
@@ -179,7 +245,7 @@ h3 {
 }
 
 /* ==========================
-   Animation
+   4. COMPONENT: Animations
 ========================== */
 
 .fade {
@@ -190,7 +256,28 @@ h3 {
   from {
     opacity: 0.4;
   }
+
   to {
     opacity: 1;
+  }
+}
+
+/* ==========================
+   5. COMPONENT: Responsive Adjustments
+========================== */
+
+@media (min-width: 768px) {
+  .slideshow-container {
+    min-height: 450px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .slideshow-container {
+    min-height: 500px;
+  }
+
+  .web-slideshow {
+    min-height: 600px;
   }
 }

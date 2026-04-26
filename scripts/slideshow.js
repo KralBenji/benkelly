@@ -1,32 +1,59 @@
-let slideIndex = 1;
-showSlides(slideIndex);
+const slideshows = [
+  {
+    section: "#graphic-design",
+    currentIndex: 0,
+  },
+  {
+    section: "#web-design",
+    currentIndex: 0,
+  },
+];
 
-// Next/previous controls
-function plusSlides(n) {
-  showSlides((slideIndex += n));
+function showSlide(slideshowIndex, slideIndex) {
+  const slideshow = slideshows[slideshowIndex];
+  const section = document.querySelector(slideshow.section);
+
+  if (!section) return;
+
+  const slides = section.querySelectorAll(".slide");
+  const dots = section.querySelectorAll(".dot");
+
+  if (!slides.length) return;
+
+  if (slideIndex >= slides.length) {
+    slideshow.currentIndex = 0;
+  } else if (slideIndex < 0) {
+    slideshow.currentIndex = slides.length - 1;
+  } else {
+    slideshow.currentIndex = slideIndex;
+  }
+
+  slides.forEach((slide) => {
+    slide.style.display = "none";
+  });
+
+  dots.forEach((dot) => {
+    dot.classList.remove("active");
+  });
+
+  slides[slideshow.currentIndex].style.display = "block";
+
+  if (dots[slideshow.currentIndex]) {
+    dots[slideshow.currentIndex].classList.add("active");
+  }
 }
 
-// Thumbnail image controls
-function currentSlide(n) {
-  showSlides((slideIndex = n));
+function plusSlides(amount, slideshowIndex) {
+  const slideshow = slideshows[slideshowIndex];
+  showSlide(slideshowIndex, slideshow.currentIndex + amount);
 }
 
-function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName("graphicSlides");
-  let dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {
-    slideIndex = 1;
-  }
-  if (n < 1) {
-    slideIndex = slides.length;
-  }
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex - 1].style.display = "block";
-  dots[slideIndex - 1].className += " active";
+function currentSlide(slideNumber, slideshowIndex) {
+  showSlide(slideshowIndex, slideNumber - 1);
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  slideshows.forEach((_, index) => {
+    showSlide(index, 0);
+  });
+});
