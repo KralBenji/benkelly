@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupHamburgerScrollColor();
 });
 
+// Opens and closes the mobile navigation menu, and adds the necessary classes to trigger CSS animations and prevent background scrolling when the menu is open.
 function setupMobileNav() {
   const hamburger = document.querySelector(".hamburger");
   const navPanel = document.querySelector(".nav-panel");
@@ -53,6 +54,7 @@ function setupMobileNav() {
   });
 }
 
+// Animates the About heading once it scrolls halfway into view.
 function setupAboutHeadingAnimation() {
   const aboutHeading = document.querySelector(".about-content h2");
 
@@ -75,6 +77,7 @@ function setupAboutHeadingAnimation() {
   observer.observe(aboutHeading);
 }
 
+// Social icons fade in and up with a staggered delay
 function setupSocialIconAnimation() {
   const icons = document.querySelectorAll(".social-icons img");
 
@@ -102,6 +105,7 @@ function setupSocialIconAnimation() {
   icons.forEach((icon) => iconObserver.observe(icon));
 }
 
+// About image animation - Fades in and upwards on page load
 function setupAboutImageAnimation() {
   const image = document.querySelector(".about-image");
 
@@ -114,6 +118,7 @@ function setupAboutImageAnimation() {
   });
 }
 
+// Hero animation - Parallax effect on scroll and shrink effect on the title as you scroll down, with a delayed shrink animation on page load.
 function setupHeroAnimation() {
   const hero = document.querySelector(".hero");
   const heroTitle = document.querySelector(".hero-title");
@@ -149,6 +154,7 @@ function setupHeroAnimation() {
   });
 }
 
+// Contact form animation - Fades in and upwards when scrolled into view
 function setupContactFormAnimation() {
   const form = document.querySelector(".contact-form.fade-up");
 
@@ -171,6 +177,7 @@ function setupContactFormAnimation() {
   observer.observe(form);
 }
 
+// Testimonials animation - Fades in and upwards when scrolled into view, with a staggered delay for the testimonial images
 function setupTestimonialsAnimation() {
   const heading = document.querySelector(".testimonials-inner h2");
   const images = document.querySelectorAll(".testimonial-image");
@@ -221,6 +228,7 @@ function setupAudioProtection() {
   });
 }
 
+// Changes the hamburger menu icon when you scroll past the hero
 function setupHamburgerScrollColor() {
   const hero = document.querySelector(".hero");
   const hamburger = document.querySelector(".hamburger");
@@ -238,7 +246,7 @@ function setupHamburgerScrollColor() {
   }
 
   window.addEventListener("scroll", updateHamburgerColor);
-  updateHamburgerColor(); // run once on load
+  updateHamburgerColor();
 }
 
 // Scroll Indicator - Scroll to Web design
