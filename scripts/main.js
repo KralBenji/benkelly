@@ -18,38 +18,37 @@ function setupMobileNav() {
 
   if (!hamburger || !navPanel || !overlay) return;
 
-  let scrollY = 0;
+  function openMenu() {
+    navPanel.classList.add("active");
+    hamburger.classList.add("active");
+    overlay.classList.add("active");
 
-  function toggleMenu() {
-    const isOpen = navPanel.classList.contains("active");
-
-    if (!isOpen) {
-      scrollY = window.scrollY;
-
-      document.body.style.position = "fixed";
-      document.body.style.top = `-${scrollY}px`;
-      document.body.style.width = "100%";
-    } else {
-      document.body.style.position = "";
-      document.body.style.top = "";
-      document.body.style.width = "";
-
-      window.scrollTo(0, scrollY);
-    }
-
-    navPanel.classList.toggle("active");
-    hamburger.classList.toggle("active");
-    overlay.classList.toggle("active");
+    document.documentElement.classList.add("no-scroll");
+    document.body.classList.add("no-scroll");
   }
 
-  hamburger.addEventListener("click", toggleMenu);
-  overlay.addEventListener("click", toggleMenu);
+  function closeMenu() {
+    navPanel.classList.remove("active");
+    hamburger.classList.remove("active");
+    overlay.classList.remove("active");
+
+    document.documentElement.classList.remove("no-scroll");
+    document.body.classList.remove("no-scroll");
+  }
+
+  hamburger.addEventListener("click", () => {
+    if (navPanel.classList.contains("active")) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  overlay.addEventListener("click", closeMenu);
 
   navLinks.forEach((link) => {
     link.addEventListener("click", () => {
-      if (navPanel.classList.contains("active")) {
-        toggleMenu();
-      }
+      closeMenu();
     });
   });
 }
