@@ -22,7 +22,21 @@ header {
 }
 
 /* ==========================
-   3. Footer
+   3. Section Scroll Offset
+========================== */
+
+#about,
+#services,
+#web-design,
+#graphic-design,
+#sound-design,
+#lets-link,
+#testimonials {
+  scroll-margin-top: var(--space-2xl);
+}
+
+/* ==========================
+   4. Footer
 ========================== */
 
 footer {

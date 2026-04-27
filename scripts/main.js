@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
   setupHeroAnimation();
   setupContactFormAnimation();
   setupTestimonialsAnimation();
+  setupAudioProtection();
+  setupHamburgerScrollColor();
 });
 
 function setupMobileNav() {
@@ -209,4 +211,45 @@ function setupTestimonialsAnimation() {
   );
 
   images.forEach((image) => imageObserver.observe(image));
+}
+
+// No right click on mp3 files in the audio player
+function setupAudioProtection() {
+  const audioElements = document.querySelectorAll("audio");
+
+  audioElements.forEach((audio) => {
+    audio.addEventListener("contextmenu", (e) => e.preventDefault());
+  });
+}
+
+function setupHamburgerScrollColor() {
+  const hero = document.querySelector(".hero");
+  const hamburger = document.querySelector(".hamburger");
+
+  if (!hero || !hamburger) return;
+
+  function updateHamburgerColor() {
+    const heroBottom = hero.offsetTop + hero.offsetHeight;
+
+    if (window.scrollY > heroBottom - 60) {
+      hamburger.classList.add("scrolled");
+    } else {
+      hamburger.classList.remove("scrolled");
+    }
+  }
+
+  window.addEventListener("scroll", updateHamburgerColor);
+  updateHamburgerColor(); // run once on load
+}
+
+// Scroll Indicator - Scroll to Web design
+const scrollIndicator = document.querySelector(".scroll-indicator");
+const webSection = document.querySelector("#web-design");
+
+if (scrollIndicator && webSection) {
+  scrollIndicator.addEventListener("click", () => {
+    webSection.scrollIntoView({
+      behavior: "smooth",
+    });
+  });
 }

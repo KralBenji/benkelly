@@ -6,10 +6,15 @@
     <title>Ben Kelly</title>
     <link rel="icon" type="image/png" href="images/pfp1.png" />
 
-    <!-- Raleway Font Links -->
+    <!-- Preconnect for faster font loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;500;700;900&display=swap" rel="stylesheet" />
+
+    <!-- Load Raleway with fallback strategy -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;900&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Stylesheet Links -->
     <link rel="stylesheet" href="styles/reset.css" />
@@ -39,15 +44,39 @@
       <nav>
         <ul class="nav-panel">
           <li><a href="/#about">About</a></li>
-          <li><a href="/#graphic-design">Graphics</a></li>
-          <li><a href="/#web-design">Websites</a></li>
-          <li><a href="/#sound-design">Sound Production</a></li>
+
+          <li class="nav-group">
+            <a href="/#services">My Services</a>
+
+            <ul class="nav-submenu">
+              <li>
+                <a href="/#web-design">
+                  <span class="submenu-arrow">&#10095;</span>
+                  Web Design
+                </a>
+              </li>
+              <li>
+                <a href="/#graphic-design">
+                  <span class="submenu-arrow">&#10095;</span>
+                  Graphic Design
+                </a>
+              </li>
+              <li>
+                <a href="/#sound-design">
+                  <span class="submenu-arrow">&#10095;</span>
+                  Sound Design
+                </a>
+              </li>
+            </ul>
+          </li>
+
           <li><a href="/#lets-link">Let's Link</a></li>
           <li><a href="/#testimonials">Testimonials</a></li>
         </ul>
       </nav>
       <div class="nav-overlay"></div>
     </header>
+    <!-- Hero Image -->
     <section class="hero">
       <img src="images/richmondskylinebanner.png" alt="Richmond City Skyline Banner" class="hero-image" />
 
@@ -58,16 +87,12 @@
 
     <!-- About -->
     <section id="about">
-      <!-- Container handles max-width + horizontal padding -->
-      <div class="container">
-        <!-- About-container handles flex layout ONLY -->
+      <div class="container about-card">
         <div class="about-container">
-          <!-- Profile picture -->
           <div class="about-media">
             <img src="images/pfp1.png" alt="Portrait of Ben Kelly" class="about-image" />
           </div>
 
-          <!-- Text + Icons -->
           <div class="about-content">
             <h2>My Journey</h2>
 
@@ -103,31 +128,62 @@
     <!-- Main Services -->
     <main id="services">
       <div class="services-container">
-        <h2>My Services</h2>
+        <div class="services-header-card">
+          <p class="eyebrow">What I Offer</p>
+          <h2>My Services</h2>
 
+          <div class="services-header-text">
+            <p>
+              <strong>Web Design: </strong>From sleek portfolios to blog sites, I create responsive websites that
+              showcase your work and personality. I focus on clean layouts, intuitive navigation, and mobile-friendly
+              design to ensure your site looks great on any device without sacrificing your personal brand and vision.
+            </p>
+            <!-- I build websites with a clean user interface, built with your personal brand in mind. My goal is to combine
+            your creative vision and your needsand bring it to life! -->
+            <p>
+              <strong>Graphic Design: </strong>Whether you need a logo, a flyer, or a full social media package, I can
+              create designs that are both visually appealing and effective on various platforms. I'll work closely with
+              you to make sure your vision is reflected in the final product, and that it resonates with your target
+              audience.
+              <!-- I design anything from flyers, posters, or album coverart, all the way to full social media packages that
+            will be both visually appealing and effective on various platforms. -->
+            </p>
+            <p>
+              <strong>Sound Design: </strong>Whether you're a YouTuber and need background music for your videos or
+              you're an artist that needs your songs mixed and mastered, I can create immersive audio experiences that
+              matches your style.
+            </p>
+          </div>
+          <button class="scroll-indicator" type="button" aria-label="Scroll to Web Design section">
+            <span class="scroll-arrow">&#10094;</span>
+          </button>
+        </div>
         <!-- Web Design -->
         <section id="web-design" class="service-block">
           <h3 id="web-design-heading">Web Design</h3>
           <p class="section-intro">Here are some of my web design projects:</p>
 
-          <div class="slideshow-container web-slideshow">
-            <div class="slide fade">
-              <div class="numbertext">1 / 3</div>
-              <img src="images/web_design/kralbenji-home.png" />
+          <div class="slideshow-shell">
+            <button class="prev" onclick="plusSlides(-1, 1)">&#10094;</button>
+
+            <div class="slideshow-container web-slideshow">
+              <div class="slide fade">
+                <div class="numbertext">1 / 3</div>
+                <img src="images/web_design/kralbenji-home.png" />
+              </div>
+
+              <div class="slide fade">
+                <div class="numbertext">2 / 3</div>
+                <img src="images/web_design/kralbenji-about.png" />
+              </div>
+
+              <div class="slide fade">
+                <div class="numbertext">3 / 3</div>
+                <img src="images/web_design/kralbenji-music.png" />
+              </div>
             </div>
 
-            <div class="slide fade">
-              <div class="numbertext">2 / 3</div>
-              <img src="images/web_design/kralbenji-about.png" />
-            </div>
-
-            <div class="slide fade">
-              <div class="numbertext">3 / 3</div>
-              <img src="images/web_design/kralbenji-music.png" />
-            </div>
-
-            <a class="prev" onclick="plusSlides(-1, 1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1, 1)">&#10095;</a>
+            <button class="next" onclick="plusSlides(1, 1)">&#10095;</button>
           </div>
 
           <div class="dots-container">
@@ -142,29 +198,32 @@
           <h3 id="graphic-design-heading">Graphic Design</h3>
           <p class="section-intro">Here are some of my graphic design projects:</p>
 
-          <div class="slideshow-container graphics-slideshow">
-            <div class="slide fade">
-              <div class="numbertext">1 / 4</div>
-              <img src="images/graphic_design/graphic_design_1.png" />
+          <div class="slideshow-shell">
+            <button class="prev" onclick="plusSlides(-1, 0)">&#10094;</button>
+
+            <div class="slideshow-container graphics-slideshow">
+              <div class="slide fade">
+                <div class="numbertext">1 / 4</div>
+                <img src="images/graphic_design/graphic_design_1.png" />
+              </div>
+
+              <div class="slide fade">
+                <div class="numbertext">2 / 4</div>
+                <img src="images/graphic_design/pops-flyer.png" />
+              </div>
+
+              <div class="slide fade">
+                <div class="numbertext">3 / 4</div>
+                <img src="images/graphic_design/pops-business-card-back.png" />
+              </div>
+
+              <div class="slide fade">
+                <div class="numbertext">4 / 4</div>
+                <img src="images/graphic_design/southsism.webp" />
+              </div>
             </div>
 
-            <div class="slide fade">
-              <div class="numbertext">2 / 4</div>
-              <img src="images/graphic_design/pops-flyer.png" />
-            </div>
-
-            <div class="slide fade">
-              <div class="numbertext">3 / 4</div>
-              <img src="images/graphic_design/pops-business-card-back.png" />
-            </div>
-
-            <div class="slide fade">
-              <div class="numbertext">4 / 4</div>
-              <img src="images/graphic_design/southsism.webp" />
-            </div>
-
-            <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
+            <button class="next" onclick="plusSlides(1, 0)">&#10095;</button>
           </div>
 
           <div class="dots-container">
@@ -184,10 +243,10 @@
             <article class="audio-card">
               <div class="audio-info">
                 <h4>All In</h4>
-                <p>Produced, mixed, mastered and recorded by Ben Kelly.</p>
+                <p>Produced, recorded, mixed, and mastered by Ben Kelly.</p>
               </div>
 
-              <audio controls>
+              <audio controls controlsList="nodownload">
                 <source src="audio/all-in-v2.mp3" type="audio/mpeg" />
                 Your browser does not support the audio element.
               </audio>
@@ -195,24 +254,24 @@
 
             <article class="audio-card">
               <div class="audio-info">
-                <h4>Song Title 2</h4>
-                <p>Produced, mixed, or arranged by Ben Kelly.</p>
+                <h4>Deliverance (10 Years)</h4>
+                <p>Produced, recorded, mixed, and mastered by Ben Kelly.</p>
               </div>
 
-              <audio controls>
-                <source src="audio/song-2.mp3" type="audio/mpeg" />
+              <audio controls controlsList="nodownload">
+                <source src="audio/deliverance_10-years-og_v2.mp3" type="audio/mpeg" />
                 Your browser does not support the audio element.
               </audio>
             </article>
 
             <article class="audio-card">
               <div class="audio-info">
-                <h4>Song Title 3</h4>
+                <h4>Good To Me</h4>
                 <p>Produced, recorded, mixed, and mastered by Ben Kelly.</p>
               </div>
 
-              <audio controls>
-                <source src="audio/song-3.mp3" type="audio/mpeg" />
+              <audio controls controlsList="nodownload">
+                <source src="audio/good-to-me-v2.mp3" type="audio/mpeg" />
                 Your browser does not support the audio element.
               </audio>
             </article>
@@ -223,7 +282,7 @@
 
     <!-- Contact -->
     <section id="lets-link" class="contact-section">
-      <div class="container contact-inner">
+      <div class="container contact-inner contact-card">
         <h2>Let’s Link</h2>
 
         <p class="contact-intro">
@@ -250,8 +309,7 @@
               <option value="">Choose one</option>
               <option value="web-design">Web Design</option>
               <option value="graphic-design">Graphic Design</option>
-              <option value="sound-production">Sound Production</option>
-              <option value="collaboration">Collaboration</option>
+              <option value="sound-design">Sound Design</option>
               <option value="general">General Question</option>
             </select>
           </div>
@@ -268,7 +326,7 @@
 
     <!-- Testimonials -->
     <section id="testimonials" class="testimonials-section">
-      <div class="container testimonials-inner">
+      <div class="container testimonials-inner testimonials-card">
         <h2>Testimonials</h2>
 
         <div class="testimonials-grid">

@@ -28,7 +28,16 @@ nav {
   height: 3px;
   background-color: white;
   border-radius: 2px;
-  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.35);
+
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.hamburger.scrolled span {
+  background-color: var(--color-accent);
 }
 
 .hamburger span:nth-child(1) {
@@ -109,6 +118,45 @@ nav {
   pointer-events: auto;
 }
 
+.nav-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-submenu {
+  list-style: none;
+  margin: var(--space-xs) 0 0;
+  padding-left: 0; /* important: remove default indent */
+}
+
+.nav-submenu a {
+  display: grid;
+  grid-template-columns: 16px auto; /* arrow column + text column */
+  align-items: center;
+  column-gap: 8px;
+
+  padding: 10px 40px; /* SAME horizontal padding as main nav */
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Arrow aligned with main nav text */
+.submenu-arrow {
+  justify-self: start;
+  font-size: 1.1rem;
+  color: var(--color-accent);
+}
+
+/* Text stays slightly indented */
+.nav-submenu a:hover {
+  color: var(--color-accent);
+}
+
+.nav-submenu a:hover .submenu-arrow {
+  transform: translateX(4px);
+  transition: transform 0.2s ease;
+}
+
 /* ==========================
    2. COMPONENT: Accent Heading
 ========================== */
@@ -137,8 +185,32 @@ nav {
 }
 
 /* ==========================
-   3. COMPONENT: Slideshow
+   3. COMPONENT: Section Cards
 ========================== */
+
+.about-card,
+.contact-card,
+.testimonials-card {
+  background: #fff;
+  border-radius: 24px;
+  padding: var(--space-lg);
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.04),
+    0 18px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================
+   4. COMPONENT: Slideshow
+========================== */
+
+.slideshow-shell {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 44px 1fr 44px;
+  align-items: center;
+  gap: var(--space-sm);
+}
 
 .slideshow-container {
   width: 100%;
@@ -152,7 +224,7 @@ nav {
   justify-content: center;
 
   border-radius: 14px;
-  overflow: visible;
+  overflow: hidden;
   background-color: #f8f8f8;
   box-shadow:
     0 4px 12px rgba(0, 0, 0, 0.04),
@@ -174,7 +246,6 @@ nav {
   object-fit: contain;
 }
 
-/* Graphic design needs a stable stage because the images use mixed aspect ratios */
 .graphics-slideshow {
   min-height: 380px;
   padding: var(--space-md);
@@ -195,24 +266,18 @@ nav {
   border-radius: 4px;
 }
 
-/* Slideshow arrow buttons */
 .prev,
 .next {
   cursor: pointer;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-
-  width: 38px;
-  height: 38px;
+  width: 44px;
+  height: 44px;
   padding: 0;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-items: center;
 
   color: #111;
-  background-color: rgba(255, 255, 255, 0.92);
+  background-color: rgba(255, 255, 255, 0.96);
   border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 50%;
   backdrop-filter: blur(6px);
@@ -220,9 +285,9 @@ nav {
 
   font-weight: bold;
   font-size: 1.25rem;
+  line-height: 1;
   text-decoration: none;
   user-select: none;
-  z-index: 10;
 
   transition:
     transform 0.25s ease,
@@ -230,26 +295,17 @@ nav {
     background-color 0.25s ease;
 }
 
-/* Mobile: keep controls inside the slideshow so they do not run off screen */
-.prev {
-  left: var(--space-xs);
-}
-
-.next {
-  right: var(--space-xs);
-}
-
 .prev:hover,
 .next:hover {
   background-color: #fff;
-  transform: translateY(-50%) scale(1.08);
+  transform: translateY(-2px);
   box-shadow:
     0 10px 26px rgba(0, 0, 0, 0.25),
     0 0 0 4px rgba(116, 153, 255, 0.15);
 }
 
 /* ==========================
-   4. COMPONENT: Slideshow Text + Indicators
+   5. COMPONENT: Slideshow Text + Indicators
 ========================== */
 
 .text {
@@ -294,7 +350,7 @@ nav {
 }
 
 /* ==========================
-   5. COMPONENT: Animations
+   6. COMPONENT: Animations
 ========================== */
 
 .fade {
@@ -312,10 +368,15 @@ nav {
 }
 
 /* ==========================
-   6. COMPONENT: Tablet Adjustments
+   7. COMPONENT: Tablet Adjustments
 ========================== */
 
 @media (min-width: 768px) {
+  .slideshow-shell {
+    grid-template-columns: 46px 1fr 46px;
+    gap: var(--space-md);
+  }
+
   .slideshow-container {
     min-height: 450px;
   }
@@ -336,25 +397,16 @@ nav {
     max-height: 600px;
   }
 
-  /* Tablet+ : move controls outside the image, but still inside the service card */
   .prev,
   .next {
-    width: 44px;
-    height: 44px;
+    width: 46px;
+    height: 46px;
     font-size: 1.4rem;
-  }
-
-  .prev {
-    left: -20px;
-  }
-
-  .next {
-    right: -20px;
   }
 }
 
 /* ==========================
-   7. COMPONENT: Desktop Adjustments
+   8. COMPONENT: Desktop Adjustments
 ========================== */
 
 @media (min-width: 1024px) {
