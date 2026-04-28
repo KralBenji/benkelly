@@ -7,6 +7,16 @@
   height: 40vh;
   min-height: 260px;
   overflow: hidden;
+
+  /* Fallback */
+  background-image: url("../../images/richmondskylinebanner.jpg");
+
+  /* Modern browsers */
+  background-image: url("../../images/richmondskylinebanner.webp");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .hero-image {
