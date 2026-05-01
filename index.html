@@ -93,7 +93,10 @@
       <div class="container about-card card">
         <div class="about-container">
           <div class="about-media">
-            <img src="images/pfp1.png" alt="Portrait of Ben Kelly" class="about-image" />
+            <picture class="about-image">
+              <source srcset="/images/artists/kralbenji-portrait-01.webp" type="image/webp" />
+              <img src="/images/artists/kralbenji-portrait-01.png" alt="Portrait of Ben Kelly" />
+            </picture>
           </div>
 
           <div class="about-content">
@@ -112,15 +115,15 @@
 
             <div class="social-icons">
               <a href="https://instagram.com/@kralbenji" target="_blank" rel="noopener noreferrer">
-                <img src="images/social_ig.png" alt="Instagram" />
+                <img src="images-original/social_ig.png" alt="Instagram" />
               </a>
 
               <a href="https://linkedin.com/in/benkellydesign" target="_blank" rel="noopener noreferrer">
-                <img src="images/social_in.png" alt="LinkedIn" />
+                <img src="images-original/social_in.png" alt="LinkedIn" />
               </a>
 
               <a href="https://x.com/@kralbenji" target="_blank" rel="noopener noreferrer">
-                <img src="images/social_x.png" alt="X" />
+                <img src="images-original/social_x.png" alt="X" />
               </a>
             </div>
           </div>
@@ -162,6 +165,7 @@
         </div>
 
         <!-- Web Design -->
+        <!-- Web Design -->
         <section id="web-design" class="service-block card">
           <h3 id="web-design-heading">Web Design</h3>
           <p class="section-intro">Here are some of my web design projects:</p>
@@ -169,20 +173,85 @@
           <div class="slideshow-shell">
             <button class="prev" onclick="plusSlides(-1, 1)">&#10094;</button>
 
-            <div class="slideshow-container web-slideshow">
+            <div class="slideshow-container web-slideshow" data-gallery="web">
               <div class="slide fade">
-                <div class="numbertext">1 / 3</div>
-                <img src="images/web_design/kralbenji-home.png" alt="Kral Benji | Official Music Website Homepage" />
+                <div class="numbertext">1 / 10</div>
+                <img
+                  src="/images/web-design/kralbenji-home-screenshot-1.webp"
+                  alt="Kral Benji website homepage screenshot 1"
+                />
               </div>
 
               <div class="slide fade">
-                <div class="numbertext">2 / 3</div>
-                <img src="images/web_design/kralbenji-about.png" alt="Kral Benji | Official Music Website About Page" />
+                <div class="numbertext">2 / 10</div>
+                <img
+                  src="/images/web-design/kralbenji-home-screenshot-2.webp"
+                  alt="Kral Benji website homepage screenshot 2"
+                />
               </div>
 
               <div class="slide fade">
-                <div class="numbertext">3 / 3</div>
-                <img src="images/web_design/kralbenji-music.png" alt="Kral Benji | Official Music Website Music Page" />
+                <div class="numbertext">3 / 10</div>
+                <img
+                  src="/images/web-design/kralbenji-about-screenshot-1.webp"
+                  alt="Kral Benji website about page screenshot 1"
+                />
+              </div>
+
+              <div class="slide fade">
+                <div class="numbertext">4 / 10</div>
+                <img
+                  src="/images/web-design/kralbenji-about-screenshot-2.webp"
+                  alt="Kral Benji website about page screenshot 2"
+                />
+              </div>
+
+              <div class="slide fade">
+                <div class="numbertext">5 / 10</div>
+                <img
+                  src="/images/web-design/kralbenji-music-screenshot-1.webp"
+                  alt="Kral Benji website music page screenshot 1"
+                />
+              </div>
+
+              <div class="slide fade">
+                <div class="numbertext">6 / 10</div>
+                <img
+                  src="/images/web-design/kralbenji-music-screenshot-2.webp"
+                  alt="Kral Benji website music page screenshot 2"
+                />
+              </div>
+
+              <div class="slide fade">
+                <div class="numbertext">7 / 10</div>
+                <img
+                  src="/images/web-design/kralbenji-music-screenshot-3.webp"
+                  alt="Kral Benji website music page screenshot 3"
+                />
+              </div>
+
+              <div class="slide fade">
+                <div class="numbertext">8 / 10</div>
+                <img
+                  src="/images/web-design/kralbenji-music-screenshot-4.webp"
+                  alt="Kral Benji website music page screenshot 4"
+                />
+              </div>
+
+              <div class="slide fade">
+                <div class="numbertext">9 / 10</div>
+                <img
+                  src="/images/web-design/kralbenji-shop-screenshot.webp"
+                  alt="Kral Benji website shop page screenshot"
+                />
+              </div>
+
+              <div class="slide fade">
+                <div class="numbertext">10 / 10</div>
+                <img
+                  src="/images/web-design/kralbenji-contact-screenshot.webp"
+                  alt="Kral Benji website contact page screenshot"
+                />
               </div>
             </div>
 
@@ -193,6 +262,13 @@
             <span class="dot" onclick="currentSlide(1, 1)"></span>
             <span class="dot" onclick="currentSlide(2, 1)"></span>
             <span class="dot" onclick="currentSlide(3, 1)"></span>
+            <span class="dot" onclick="currentSlide(4, 1)"></span>
+            <span class="dot" onclick="currentSlide(5, 1)"></span>
+            <span class="dot" onclick="currentSlide(6, 1)"></span>
+            <span class="dot" onclick="currentSlide(7, 1)"></span>
+            <span class="dot" onclick="currentSlide(8, 1)"></span>
+            <span class="dot" onclick="currentSlide(9, 1)"></span>
+            <span class="dot" onclick="currentSlide(10, 1)"></span>
           </div>
         </section>
 
@@ -204,25 +280,41 @@
           <div class="slideshow-shell">
             <button class="prev" onclick="plusSlides(-1, 0)">&#10094;</button>
 
-            <div class="slideshow-container graphics-slideshow">
+            <div class="slideshow-container graphics-slideshow" data-gallery="graphics">
               <div class="slide fade">
-                <div class="numbertext">1 / 4</div>
-                <img src="images/graphic_design/graphic_design_1.png" alt="Late Night Dark Thoughts - Song Coverart" />
+                <div class="numbertext">1 / 6</div>
+                <img
+                  src="/images/graphic-design/graphic-lndt-cover.webp"
+                  alt="Late Night Dark Thoughts - Song Cover Art"
+                />
               </div>
 
               <div class="slide fade">
-                <div class="numbertext">2 / 4</div>
-                <img src="images/graphic_design/pops-flyer.png" alt="Pops - Flyer" />
+                <div class="numbertext">2 / 6</div>
+                <img src="/images/graphic-design/graphics-pops-flyer.webp" alt="Pops Flyer" />
               </div>
 
               <div class="slide fade">
-                <div class="numbertext">3 / 4</div>
-                <img src="images/graphic_design/pops-business-card-back.png" alt="Pops - Business Card Back" />
+                <div class="numbertext">3 / 6</div>
+                <img src="/images/graphic-design/graphic-pops-banner.webp" alt="Pops Banner" />
               </div>
 
               <div class="slide fade">
-                <div class="numbertext">4 / 4</div>
-                <img src="images/graphic_design/southsism.webp" alt="Southsism - Album Cover" />
+                <div class="numbertext">4 / 6</div>
+                <img
+                  src="/images/graphic-design/graphic-pops-business-card-front.webp"
+                  alt="Pops Business Card Front"
+                />
+              </div>
+
+              <div class="slide fade">
+                <div class="numbertext">5 / 6</div>
+                <img src="/images/graphic-design/graphic-pops-business-card-back.webp" alt="Pops Business Card Back" />
+              </div>
+
+              <div class="slide fade">
+                <div class="numbertext">6 / 6</div>
+                <img src="/images/graphic-design/graphic-southsism-cover.webp" alt="Southsism Album Cover" />
               </div>
             </div>
 
@@ -234,6 +326,8 @@
             <span class="dot" onclick="currentSlide(2, 0)"></span>
             <span class="dot" onclick="currentSlide(3, 0)"></span>
             <span class="dot" onclick="currentSlide(4, 0)"></span>
+            <span class="dot" onclick="currentSlide(5, 0)"></span>
+            <span class="dot" onclick="currentSlide(6, 0)"></span>
           </div>
         </section>
 
@@ -334,7 +428,11 @@
 
         <div class="testimonials-grid">
           <article class="testimonial-row">
-            <img src="images/testimonials/testimonial1.jpg" alt="Client portrait" class="testimonial-image" />
+            <img
+              src="images/testimonials/testimonial-filler-1.webp"
+              alt="Client portrait 1"
+              class="testimonial-image"
+            />
 
             <div class="testimonial-text">
               <p>
@@ -345,7 +443,11 @@
           </article>
 
           <article class="testimonial-row testimonial-row-reverse">
-            <img src="images/testimonials/testimonial2.jpg" alt="Client portrait" class="testimonial-image" />
+            <img
+              src="images/testimonials/testimonial-filler-2.webp"
+              alt="Client portrait 2"
+              class="testimonial-image"
+            />
 
             <div class="testimonial-text">
               <p>“The final product felt professional, polished, and exactly aligned with the style I wanted.”</p>
@@ -354,7 +456,11 @@
           </article>
 
           <article class="testimonial-row">
-            <img src="images/testimonials/testimonial3.jpg" alt="Client portrait" class="testimonial-image" />
+            <img
+              src="images/testimonials/testimonial-filler-3.webp"
+              alt="Client portrait 3"
+              class="testimonial-image"
+            />
 
             <div class="testimonial-text">
               <p>“Working with Ben was easy from start to finish. He understood the project and delivered.”</p>
@@ -368,19 +474,30 @@
     <footer>
       <div class="social-icons footer-socials">
         <a href="https://instagram.com/@kralbenji" target="_blank" rel="noopener noreferrer">
-          <img src="images/social_ig.png" alt="Instagram" />
+          <img src="images-original/social_ig.png" alt="Instagram" />
         </a>
 
         <a href="https://linkedin.com/in/benkellydesign" target="_blank" rel="noopener noreferrer">
-          <img src="images/social_in.png" alt="LinkedIn" />
+          <img src="images-original/social_in.png" alt="LinkedIn" />
         </a>
 
         <a href="https://x.com/@kralbenji" target="_blank" rel="noopener noreferrer">
-          <img src="images/social_x.png" alt="X" />
+          <img src="images-original/social_x.png" alt="X" />
         </a>
       </div>
 
       <p>&copy; 2026 Ben Kelly. All rights reserved.</p>
     </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+      <span class="lightbox-close">&times;</span>
+
+      <button class="lightbox-prev">&#10094;</button>
+
+      <img class="lightbox-image" src="" alt="Expanded project image" />
+
+      <button class="lightbox-next">&#10095;</button>
+    </div>
   </body>
 </html>

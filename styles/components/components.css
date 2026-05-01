@@ -126,28 +126,26 @@ nav {
 .nav-submenu {
   list-style: none;
   margin: var(--space-xs) 0 0;
-  padding-left: 0; /* important: remove default indent */
+  padding-left: 0;
 }
 
 .nav-submenu a {
   display: grid;
-  grid-template-columns: 16px auto; /* arrow column + text column */
+  grid-template-columns: 16px auto;
   align-items: center;
   column-gap: 8px;
 
-  padding: 10px 40px; /* SAME horizontal padding as main nav */
+  padding: 10px 40px;
   font-size: 1.05rem;
   color: rgba(255, 255, 255, 0.85);
 }
 
-/* Arrow aligned with main nav text */
 .submenu-arrow {
   justify-self: start;
   font-size: 1.1rem;
   color: var(--color-accent);
 }
 
-/* Text stays slightly indented */
 .nav-submenu a:hover {
   color: var(--color-accent);
 }
@@ -225,7 +223,8 @@ nav {
 
   border-radius: 14px;
   overflow: hidden;
-  background-color: #f8f8f8;
+  background-color: var(--color-accent);
+
   box-shadow:
     0 4px 12px rgba(0, 0, 0, 0.04),
     0 12px 28px rgba(0, 0, 0, 0.08);
@@ -234,6 +233,7 @@ nav {
 .slide {
   display: none;
   width: 100%;
+  position: relative;
 }
 
 .slide img {
@@ -244,6 +244,38 @@ nav {
   display: block;
   margin: 0 auto;
   object-fit: contain;
+}
+
+.slideshow-container .slide img {
+  cursor: zoom-in;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.slideshow-container .slide img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+}
+
+.slide::after {
+  content: "⤢";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.2rem;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 6px 8px;
+  border-radius: 6px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 3;
+}
+
+.slide:hover::after {
+  opacity: 1;
 }
 
 .graphics-slideshow {
@@ -350,7 +382,101 @@ nav {
 }
 
 /* ==========================
-   6. COMPONENT: Animations
+   6. COMPONENT: Lightbox
+========================== */
+
+body.lightbox-open {
+  overflow: hidden;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+
+  padding: 60px 16px 80px;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-image {
+  max-width: 90%;
+  max-height: calc(100vh - 140px); /* Replaces old max height */
+  object-fit: contain;
+  border-radius: 12px;
+  transition: none;
+  transform-origin: center center;
+  cursor: zoom-in;
+  user-select: none;
+  will-change: transform;
+
+  touch-action: none;
+  -webkit-user-drag: none;
+}
+
+.lightbox-image.is-zoomed {
+  cursor: grab;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.lightbox-image.is-dragging {
+  cursor: grabbing;
+  transition: none;
+}
+
+.lightbox-close {
+  position: absolute;
+  z-index: 10000;
+  top: 24px;
+  right: 20px;
+  font-size: 2.5rem;
+  color: white;
+  cursor: pointer;
+}
+
+.lightbox-prev,
+.lightbox-next {
+  z-index: 100000;
+  position: absolute;
+  backdrop-filter: blur(6px);
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  font-size: 2rem;
+  color: white;
+  padding: 12px 16px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.lightbox-prev {
+  left: 30px;
+}
+
+.lightbox-next {
+  right: 30px;
+}
+
+/* ==========================
+   7. COMPONENT: Animations
 ========================== */
 
 .fade {
@@ -368,7 +494,97 @@ nav {
 }
 
 /* ==========================
-   7. COMPONENT: Tablet Adjustments
+   8. COMPONENT: Card
+========================== */
+
+.card {
+  background-color: #fff;
+  border-radius: 16px;
+
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.04),
+    0 8px 20px rgba(0, 0, 0, 0.06),
+    0 20px 40px rgba(0, 0, 0, 0.08);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.audio-card {
+  transform: none;
+}
+
+@media (hover: hover) {
+  .card:hover {
+    transform: translateY(-6px);
+
+    box-shadow:
+      0 6px 14px rgba(0, 0, 0, 0.06),
+      0 14px 35px rgba(0, 0, 0, 0.1),
+      0 30px 60px rgba(0, 0, 0, 0.14);
+  }
+
+  .audio-card:hover {
+    transform: translateY(-4px);
+  }
+}
+
+/* ==========================
+   Mobile Slideshow Controls
+========================== */
+
+@media (max-width: 767px) {
+  .slideshow-shell {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "slideshow slideshow"
+      "prev next";
+    gap: var(--space-sm);
+  }
+
+  .slideshow-container {
+    grid-area: slideshow;
+  }
+
+  .prev {
+    grid-area: prev;
+    justify-self: end;
+  }
+
+  .next {
+    grid-area: next;
+    justify-self: start;
+  }
+
+  .prev,
+  .next {
+    margin-top: var(--space-sm);
+  }
+
+  .lightbox-prev,
+  .lightbox-next {
+    top: auto;
+    bottom: 24px;
+    transform: none;
+  }
+
+  .lightbox-prev {
+    left: 24px;
+  }
+
+  .lightbox-next {
+    right: 24px;
+  }
+
+  .lightbox-close {
+    top: 18px;
+    right: 22px;
+  }
+}
+
+/* ==========================
+   9. MEDIA QUERY: Tablet
 ========================== */
 
 @media (min-width: 768px) {
@@ -406,12 +622,45 @@ nav {
 }
 
 /* ==========================
-   8. COMPONENT: Desktop Adjustments
+   Tablet Lightbox Controls
+========================== */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .lightbox {
+    padding-left: 72px;
+    padding-right: 72px;
+  }
+
+  .lightbox-image {
+    max-width: calc(100vw - 180px);
+  }
+
+  .lightbox-prev {
+    left: 24px;
+  }
+
+  .lightbox-next {
+    right: 24px;
+  }
+}
+
+/* ==========================
+   10. MEDIA QUERY: Desktop
 ========================== */
 
 @media (min-width: 1024px) {
+  .lightbox {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+
+  .lightbox-image {
+    max-width: calc(100% - 120px);
+  }
+
   .slideshow-container {
     min-height: 500px;
+    background-color: transparent;
   }
 
   .graphics-slideshow {
@@ -424,44 +673,5 @@ nav {
 
   .web-slideshow {
     min-height: 600px;
-  }
-}
-
-/* ==========================
-   COMPONENT: Card (Reusable)
-========================== */
-
-.card {
-  background-color: #fff;
-  border-radius: 16px;
-
-  box-shadow:
-    0 2px 6px rgba(0, 0, 0, 0.04),
-    0 8px 20px rgba(0, 0, 0, 0.06),
-    0 20px 40px rgba(0, 0, 0, 0.08);
-
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-@media (hover: hover) {
-  .card:hover {
-    transform: translateY(-6px);
-
-    box-shadow:
-      0 6px 14px rgba(0, 0, 0, 0.06),
-      0 14px 35px rgba(0, 0, 0, 0.1),
-      0 30px 60px rgba(0, 0, 0, 0.14);
-  }
-}
-
-.audio-card {
-  transform: none;
-}
-
-@media (hover: hover) {
-  .audio-card:hover {
-    transform: translateY(-4px); /* slightly less than main cards */
   }
 }

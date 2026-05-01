@@ -18,11 +18,10 @@
   width: 100%;
 }
 
+/* Picture wrapper */
 .about-image {
   width: 100%;
   max-width: 85%;
-  height: auto;
-  border-radius: var(--space-xs);
   display: block;
   margin: 0 auto;
   opacity: 0;
@@ -30,6 +29,14 @@
   transition:
     opacity 0.8s ease,
     transform 0.8s ease 0.15s;
+}
+
+/* Actual image inside <picture> */
+.about-image img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--space-xs);
+  display: block;
 }
 
 .about-image.show {
