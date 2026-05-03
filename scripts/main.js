@@ -435,3 +435,10 @@ document.addEventListener("DOMContentLoaded", () => {
     { passive: false },
   );
 });
+
+// No audio download in contorls list
+const audioElements = document.querySelectorAll("audio");
+
+audioElements.forEach((audio) => {
+  audio.controlsList = "nodownload";
+});
