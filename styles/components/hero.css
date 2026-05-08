@@ -9,7 +9,8 @@
   overflow: hidden;
 
   /* Fallback */
-  background-image: url("images/hero/richmond-skyline-hero.webp"), url("images/hero/richmond-skyline-hero.jpg");
+  background-image:
+    url("../../images/hero/richmond-skyline-hero.webp"), url("../../images/hero/richmond-skyline-hero.jpg");
 
   background-size: cover;
   background-position: center;
