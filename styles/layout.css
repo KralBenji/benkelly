@@ -1,28 +1,32 @@
 /* ==========================
-   1. Container
+   Container
 ========================== */
 
 .container {
   width: 100%;
   max-width: 1200px;
+
   margin: 0 auto;
+
   padding: 0 var(--space-sm);
 }
 
 /* ==========================
-   2. Header
+   Header
 ========================== */
 
 header {
   position: absolute;
   top: 0;
   left: 0;
+
   width: 100%;
+
   z-index: 1000;
 }
 
 /* ==========================
-   3. Section Scroll Offset
+   Section Scroll Offset
 ========================== */
 
 #about,
@@ -36,21 +40,32 @@ header {
 }
 
 /* ==========================
-   4. Footer
+   Footer
 ========================== */
 
 footer {
   text-align: center;
+
   padding: var(--space-md) var(--space-sm);
+
+  color: var(--color-text-muted);
+
+  transition:
+    color var(--transition-base),
+    background-color var(--transition-base);
 }
 
 footer .footer-socials {
   display: flex;
   justify-content: center;
   align-items: center;
+
   gap: var(--space-sm);
+
   width: 100%;
   max-width: max-content;
+
   margin: 0 auto var(--space-sm);
+
   padding: 0;
 }

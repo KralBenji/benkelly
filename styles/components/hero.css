@@ -8,7 +8,6 @@
   min-height: 260px;
   overflow: hidden;
 
-  /* Fallback */
   background-image:
     url("../../images/hero/richmond-skyline-hero.webp"), url("../../images/hero/richmond-skyline-hero.jpg");
 
@@ -27,16 +26,20 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.2));
+
+  background: linear-gradient(to bottom, var(--color-hero-overlay-start), var(--color-hero-overlay-end));
 }
 
 .hero-content {
   position: absolute;
   inset: 0;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   z-index: 2;
+
   transform: translateY(15px);
 }
 
@@ -45,21 +48,29 @@
   letter-spacing: 8px;
   text-transform: uppercase;
   font-weight: 700;
-  color: #fff;
-  text-shadow: 0 6px 25px rgba(0, 0, 0, 0.35);
+
+  color: var(--color-hero-text);
+  text-shadow: var(--shadow-text);
+
   will-change: transform;
+
   transition: transform 0.1s linear;
 }
 
 .hero-title::after {
   content: "";
   display: block;
+
   width: 240px;
   height: 3px;
+
   margin: 16px auto 0;
+
   background: linear-gradient(to right, var(--color-accent), var(--color-accent-dark));
+
   transform: scaleX(0);
   transform-origin: center;
+
   animation: heroLineExpand 0.8s ease 0.15s forwards;
 }
 

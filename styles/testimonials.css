@@ -1,9 +1,5 @@
 /* ==========================
-   Testimonials Section - Mobile First
-========================== */
-
-/* ==========================
-   1. SECTION LAYOUT
+   Testimonials Section
 ========================== */
 
 .testimonials-section {
@@ -20,24 +16,31 @@
   font-size: 1.75rem;
   line-height: 1.2;
   letter-spacing: 1px;
+
   margin: 0 auto;
+
   position: relative;
   display: inline-block;
 }
 
-/* Animated underline */
-
 .testimonials-inner h2::after {
   content: "";
+
   position: absolute;
+
   left: 50%;
   bottom: calc(-1 * var(--space-xs));
+
   transform: translateX(-50%) scaleX(0);
   transform-origin: right;
+
   width: 50%;
   height: 3px;
+
   background: linear-gradient(to right, var(--color-accent), var(--color-accent-dark));
+
   border-radius: 2px;
+
   transition: transform 0.8s ease 0.15s;
 }
 
@@ -46,41 +49,58 @@
 }
 
 /* ==========================
-   2. GRID STRUCTURE
+   Grid Structure
 ========================== */
 
 .testimonials-grid {
   display: flex;
   flex-direction: column;
+
   gap: var(--space-xl);
+
   margin-top: var(--space-xl);
 }
 
 .testimonial-row {
   display: grid;
   grid-template-columns: 1fr;
+
   gap: var(--space-md);
+
   align-items: center;
 }
 
 /* ==========================
-   3. IMAGES
+   Images
 ========================== */
 
 .testimonial-image {
   width: 100%;
   max-width: 320px;
+
   aspect-ratio: 1 / 1;
   object-fit: cover;
+
   display: block;
+
   margin: 0 auto;
+
   border-radius: 10px;
+
+  box-shadow: var(--shadow-soft);
 
   opacity: 0;
   transform: translateY(20px);
+
   transition:
     opacity 0.6s ease,
-    transform 0.6s ease;
+    transform 0.6s ease,
+    box-shadow var(--transition-base),
+    filter var(--transition-base);
+}
+
+[data-theme="dark"] .testimonial-image {
+  filter: brightness(0.92) contrast(1.04);
 }
 
 .testimonial-image.animate {
@@ -89,12 +109,14 @@
 }
 
 /* ==========================
-   4. TEXT CONTENT
+   Text Content
 ========================== */
 
 .testimonial-text {
   max-width: 600px;
+
   margin: 0 auto;
+
   text-align: center;
 }
 
@@ -105,12 +127,15 @@
 
 .testimonial-text h3 {
   margin-top: var(--space-sm);
+
   font-size: 1rem;
   font-weight: 700;
+
+  color: var(--color-text);
 }
 
 /* ==========================
-   5. MOBILE OPTIMIZATION
+   Mobile Optimization
 ========================== */
 
 @media (max-width: 767px) {
@@ -128,7 +153,7 @@
 }
 
 /* ==========================
-   6. DESKTOP CHECKERBOARD
+   Desktop Checkerboard
 ========================== */
 
 @media (min-width: 768px) {

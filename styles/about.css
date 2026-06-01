@@ -18,7 +18,6 @@
   width: 100%;
 }
 
-/* Picture wrapper */
 .about-image {
   width: 100%;
   max-width: 85%;
@@ -26,17 +25,26 @@
   margin: 0 auto;
   opacity: 0;
   transform: translateY(var(--space-xs));
+
   transition:
     opacity 0.8s ease,
     transform 0.8s ease 0.15s;
 }
 
-/* Actual image inside <picture> */
 .about-image img {
   width: 100%;
   height: auto;
   border-radius: var(--space-xs);
   display: block;
+  box-shadow: var(--shadow-soft);
+
+  transition:
+    box-shadow var(--transition-base),
+    filter var(--transition-base);
+}
+
+[data-theme="dark"] .about-image img {
+  filter: brightness(0.92) contrast(1.04);
 }
 
 .about-image.show {
@@ -63,14 +71,20 @@
 .about-content h2::after {
   content: "";
   position: absolute;
+
   left: 50%;
   bottom: calc(-1 * var(--space-xs));
+
   transform: translateX(-50%) scaleX(0);
   transform-origin: right;
+
   width: 50%;
   height: 3px;
+
   background: linear-gradient(to right, var(--color-accent), var(--color-accent-dark));
+
   border-radius: 2px;
+
   transition: transform 0.8s ease 0.15s;
 }
 
@@ -104,14 +118,23 @@
 .social-icons img {
   width: 40px;
   height: 40px;
+
   opacity: 0;
+
   transform: translateY(var(--space-sm));
+
   transition:
     opacity 0.5s ease,
     transform 0.5s ease,
     filter 0.3s ease;
+
   cursor: pointer;
+
   will-change: transform, opacity;
+}
+
+[data-theme="dark"] .social-icons img {
+  filter: brightness(0) invert(1);
 }
 
 .social-icons img.show {
@@ -121,6 +144,7 @@
 
 .social-icons a:hover img {
   transform: translateY(-4px) scale(1.15);
+
   filter: brightness(0) saturate(100%) invert(59%) sepia(15%) saturate(1733%) hue-rotate(196deg) brightness(92%)
     contrast(92%);
 }
