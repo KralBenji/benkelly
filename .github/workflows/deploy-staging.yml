@@ -14,20 +14,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy to VPS
-        uses: appleboy/ssh-action@v1.0.3
-
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.VPS_SSH_KEY }}
-          port: ${{ secrets.VPS_PORT }}
-
-          timeout: 60s
-          command_timeout: 10m
-
-          script: |
-            cd ${{ secrets.STAGING_SITE_PATH }}
-
-            git fetch origin staging
-            git reset --hard origin/staging
+      - name: Trigger VPS deploy webhook
+        run: |
+          curl --fail-with-body -X POST https://api.benjibusco.cloud/deploy \
+            -H "Authorization: Bearer ${{ secrets.DEPLOY_WEBHOOK_SECRET }}" \
+            -H "Content-Type: application/json" \
+            -d '{"target":"benkelly-staging"}'
