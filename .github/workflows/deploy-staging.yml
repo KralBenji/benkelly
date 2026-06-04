@@ -17,11 +17,11 @@ jobs:
     steps:
       - name: Check API status
         run: |
-          curl --fail-with-body --connect-timeout 10 --max-time 20 https://api.benjibusco.cloud/status
+          curl -4 --fail-with-body --connect-timeout 10 --max-time 20 https://api.benjibusco.cloud/status
 
       - name: Trigger VPS deploy webhook
         run: |
-          curl --fail-with-body --connect-timeout 10 --max-time 60 -X POST https://api.benjibusco.cloud/deploy \
+          curl -4 --fail-with-body --connect-timeout 10 --max-time 60 -X POST https://api.benjibusco.cloud/deploy \
             -H "Authorization: Bearer ${{ secrets.DEPLOY_WEBHOOK_SECRET }}" \
             -H "Content-Type: application/json" \
             -d '{"target":"benkelly-staging"}'
