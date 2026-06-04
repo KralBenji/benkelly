@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+concurrency:
+  group: production-deploy
+  cancel-in-progress: true
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -12,11 +16,18 @@ jobs:
     steps:
       - name: Deploy to VPS
         uses: appleboy/ssh-action@v1.0.3
+
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           port: ${{ secrets.VPS_PORT }}
+
+          timeout: 60s
+          command_timeout: 10m
+
           script: |
-            cd ${{ secrets.SITE_PATH }}
-            git pull origin main
+            cd ${{ secrets.PROD_SITE_PATH }}
+
+            git fetch origin main
+            git reset --hard origin/main
