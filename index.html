@@ -18,6 +18,7 @@
 
     <!-- Base CSS -->
     <link rel="stylesheet" href="styles/reset.css" />
+    <link rel="stylesheet" href="styles/variables.css" />
     <link rel="stylesheet" href="styles/base.css" />
     <link rel="stylesheet" href="styles/layout.css" />
 
@@ -34,10 +35,19 @@
     <!-- JavaScript Links -->
     <script src="scripts/main.js" defer></script>
     <script src="scripts/slideshow.js" defer></script>
+    <script src="scripts/dark-theme-toggle.js" defer></script>
   </head>
 
   <body>
     <header>
+      <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
+        <span class="theme-toggle-track">
+          <span class="theme-toggle-icon theme-toggle-icon-light">☀</span>
+          <span class="theme-toggle-thumb"></span>
+          <span class="theme-toggle-icon theme-toggle-icon-dark">☾</span>
+        </span>
+      </button>
+
       <button class="hamburger" aria-label="Toggle Menu">
         <span></span>
         <span></span>

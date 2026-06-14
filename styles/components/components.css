@@ -1,5 +1,5 @@
 /* ==========================
-   1. COMPONENT: Navigation
+   Component: Navigation
 ========================== */
 
 nav {
@@ -26,14 +26,14 @@ nav {
   left: 0;
   width: 100%;
   height: 3px;
-  background-color: white;
+  background-color: var(--color-surface);
   border-radius: 2px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.35);
+  box-shadow: var(--shadow-soft);
 
   transition:
-    background-color 0.3s ease,
-    transform 0.3s ease,
-    opacity 0.3s ease;
+    background-color var(--transition-base),
+    transform var(--transition-base),
+    opacity var(--transition-base);
 }
 
 .hamburger.scrolled span {
@@ -76,14 +76,24 @@ nav {
   right: -100%;
   width: 300px;
   height: 100vh;
-  background-color: #111;
+
+  background-color: var(--color-surface);
+
   display: flex;
   flex-direction: column;
+
   padding-top: 120px;
+
   list-style: none;
   margin: 0;
+
   transition: right 0.35s ease;
+
   z-index: 4000;
+
+  border-left: 1px solid var(--color-border);
+
+  box-shadow: var(--shadow-hover);
 }
 
 .nav-panel.active {
@@ -93,10 +103,13 @@ nav {
 .nav-panel a {
   display: block;
   padding: 20px 40px;
-  color: white;
+
+  color: var(--color-text);
+
   text-decoration: none;
   font-size: 1.1rem;
-  transition: color 0.3s ease;
+
+  transition: color var(--transition-base);
 }
 
 .nav-panel a:hover {
@@ -106,10 +119,14 @@ nav {
 .nav-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
+
+  background: var(--color-overlay);
+
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease;
+
+  transition: opacity var(--transition-base);
+
   z-index: 3000;
 }
 
@@ -137,7 +154,8 @@ nav {
 
   padding: 10px 40px;
   font-size: 1.05rem;
-  color: rgba(255, 255, 255, 0.85);
+
+  color: var(--color-text-muted);
 }
 
 .submenu-arrow {
@@ -156,7 +174,127 @@ nav {
 }
 
 /* ==========================
-   2. COMPONENT: Accent Heading
+   Theme Toggle
+========================== */
+
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 75px;
+  z-index: 5000;
+
+  padding: 0;
+
+  background: none;
+  border: none;
+
+  cursor: pointer;
+}
+
+.theme-toggle-track {
+  position: relative;
+
+  width: 64px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 9px;
+
+  border-radius: 999px;
+
+  background-color: rgba(255, 255, 255, 0.82);
+
+  border: 1px solid rgba(255, 255, 255, 0.55);
+
+  box-shadow: var(--shadow-soft);
+
+  backdrop-filter: blur(10px);
+
+  transition:
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.theme-toggle-thumb {
+  position: absolute;
+
+  top: 50%;
+  left: 4px;
+
+  width: 26px;
+  height: 26px;
+
+  transform: translateY(-50%);
+
+  border-radius: 50%;
+
+  background-color: var(--color-surface);
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.22);
+
+  transition:
+    transform var(--transition-base),
+    background-color var(--transition-base);
+}
+
+.theme-toggle-icon {
+  position: relative;
+  z-index: 2;
+
+  font-size: 0.9rem;
+  line-height: 1;
+
+  color: var(--color-text-muted);
+
+  transition:
+    color var(--transition-base),
+    opacity var(--transition-base);
+}
+
+[data-theme="dark"] .theme-toggle-track {
+  background-color: rgba(21, 28, 48, 0.84);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+[data-theme="dark"] .theme-toggle-thumb {
+  transform: translate(30px, -50%);
+}
+
+[data-theme="dark"] .theme-toggle-track {
+  background-color: rgba(245, 247, 255, 0.14);
+  border-color: rgba(245, 247, 255, 0.28);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(139, 168, 255, 0.16);
+}
+
+[data-theme="dark"] .theme-toggle-thumb {
+  background-color: var(--color-accent);
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.35),
+    0 0 14px rgba(139, 168, 255, 0.45);
+}
+
+[data-theme="dark"] .theme-toggle-icon {
+  color: var(--color-hero-text);
+}
+
+.theme-toggle:hover .theme-toggle-track {
+  box-shadow: var(--shadow-hover);
+}
+
+.theme-toggle:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 4px;
+  border-radius: 999px;
+}
+
+/* ==========================
+   Component: Accent Heading
 ========================== */
 
 .accent-heading {
@@ -167,14 +305,20 @@ nav {
 .accent-heading::after {
   content: "";
   position: absolute;
+
   left: 50%;
   bottom: calc(-1 * var(--space-xs));
+
   transform: translateX(-50%) scaleX(0);
   transform-origin: right;
+
   width: 50%;
   height: 3px;
+
   background: linear-gradient(to right, var(--color-accent), var(--color-accent-dark));
+
   border-radius: 2px;
+
   transition: transform 0.8s ease 0.15s;
 }
 
@@ -183,38 +327,49 @@ nav {
 }
 
 /* ==========================
-   3. COMPONENT: Section Cards
+   Component: Section Cards
 ========================== */
 
 .about-card,
 .contact-card,
 .testimonials-card {
-  background: #fff;
+  background: var(--color-surface);
+
   border-radius: 24px;
   padding: var(--space-lg);
 
-  box-shadow:
-    0 4px 12px rgba(0, 0, 0, 0.04),
-    0 18px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--color-border);
+
+  box-shadow: var(--shadow-soft);
+
+  transition:
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
 }
 
 /* ==========================
-   4. COMPONENT: Slideshow
+   Component: Slideshow
 ========================== */
 
 .slideshow-shell {
   width: 100%;
+
   display: grid;
   grid-template-columns: 44px 1fr 44px;
+
   align-items: center;
+
   gap: var(--space-sm);
 }
 
 .slideshow-container {
   width: 100%;
   margin: 0 auto;
+
   position: relative;
   text-align: center;
+
   min-height: 360px;
 
   display: flex;
@@ -223,11 +378,17 @@ nav {
 
   border-radius: 14px;
   overflow: hidden;
-  background-color: var(--color-accent);
 
-  box-shadow:
-    0 4px 12px rgba(0, 0, 0, 0.04),
-    0 12px 28px rgba(0, 0, 0, 0.08);
+  background-color: var(--color-surface-alt);
+
+  border: 1px solid var(--color-border);
+
+  box-shadow: var(--shadow-soft);
+
+  transition:
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
 }
 
 .slide {
@@ -239,15 +400,19 @@ nav {
 .slide img {
   max-width: 100%;
   max-height: 420px;
+
   width: auto;
   height: auto;
+
   display: block;
   margin: 0 auto;
+
   object-fit: contain;
 }
 
 .slideshow-container .slide img {
   cursor: zoom-in;
+
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
@@ -255,22 +420,31 @@ nav {
 
 .slideshow-container .slide img:hover {
   transform: scale(1.02);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+  box-shadow: var(--shadow-hover);
 }
 
 .slide::after {
   content: "⤢";
+
   position: absolute;
   top: 10px;
   right: 10px;
+
   font-size: 1.2rem;
-  color: white;
-  background: rgba(0, 0, 0, 0.5);
+
+  color: var(--color-text);
+
+  background: var(--color-overlay);
+
   padding: 6px 8px;
+
   border-radius: 6px;
+
   opacity: 0;
   pointer-events: none;
+
   transition: opacity 0.3s ease;
+
   z-index: 3;
 }
 
@@ -301,6 +475,7 @@ nav {
 .prev,
 .next {
   cursor: pointer;
+
   width: 44px;
   height: 44px;
   padding: 0;
@@ -308,56 +483,75 @@ nav {
   display: grid;
   place-items: center;
 
-  color: #111;
-  background-color: rgba(255, 255, 255, 0.96);
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  color: var(--color-text);
+
+  background-color: var(--color-surface);
+
+  border: 1px solid var(--color-border);
+
   border-radius: 50%;
+
   backdrop-filter: blur(6px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+
+  box-shadow: var(--shadow-soft);
 
   font-weight: bold;
   font-size: 1.25rem;
   line-height: 1;
+
   text-decoration: none;
   user-select: none;
 
   transition:
     transform 0.25s ease,
     box-shadow 0.25s ease,
-    background-color 0.25s ease;
+    background-color 0.25s ease,
+    color 0.25s ease;
 }
 
 .prev:hover,
 .next:hover {
-  background-color: #fff;
+  background-color: var(--color-surface-alt);
+
+  color: var(--color-accent);
+
   transform: translateY(-2px);
-  box-shadow:
-    0 10px 26px rgba(0, 0, 0, 0.25),
-    0 0 0 4px rgba(116, 153, 255, 0.15);
+
+  box-shadow: var(--shadow-hover);
 }
 
 /* ==========================
-   5. COMPONENT: Slideshow Text + Indicators
+   Component: Slideshow Text + Indicators
 ========================== */
 
 .text {
-  color: #f2f2f2;
+  color: var(--color-text);
+
   font-size: 0.95rem;
+
   padding: 8px 12px;
+
   position: absolute;
   bottom: 8px;
+
   width: 100%;
+
   text-align: center;
 }
 
 .numbertext {
-  color: #f2f2f2;
-  background-color: rgba(0, 0, 0, 0.45);
+  color: var(--color-text);
+
+  background-color: var(--color-overlay);
+
   font-size: 0.8rem;
+
   padding: 8px 12px;
+
   position: absolute;
   top: 0;
   left: 0;
+
   z-index: 2;
 }
 
@@ -367,22 +561,28 @@ nav {
 
 .dot {
   cursor: pointer;
+
   height: 12px;
   width: 12px;
+
   margin: 0 4px;
-  background-color: #bbb;
+
+  background-color: var(--color-text-muted);
+
   border-radius: 50%;
+
   display: inline-block;
+
   transition: background-color 0.3s ease;
 }
 
 .dot.active,
 .dot:hover {
-  background-color: #717171;
+  background-color: var(--color-accent);
 }
 
 /* ==========================
-   6. COMPONENT: Lightbox
+   Component: Lightbox
 ========================== */
 
 body.lightbox-open {
@@ -392,16 +592,20 @@ body.lightbox-open {
 .lightbox {
   position: fixed;
   inset: 0;
+
   background: rgba(0, 0, 0, 0.9);
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   z-index: 9999;
 
   padding: 60px 16px 80px;
 
   opacity: 0;
   visibility: hidden;
+
   transition: opacity 0.3s ease;
 }
 
@@ -412,13 +616,19 @@ body.lightbox-open {
 
 .lightbox-image {
   max-width: 90%;
-  max-height: calc(100vh - 140px); /* Replaces old max height */
+  max-height: calc(100vh - 140px);
+
   object-fit: contain;
+
   border-radius: 12px;
+
   transition: none;
+
   transform-origin: center center;
+
   cursor: zoom-in;
   user-select: none;
+
   will-change: transform;
 
   touch-action: none;
@@ -427,7 +637,7 @@ body.lightbox-open {
 
 .lightbox-image.is-zoomed {
   cursor: grab;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--shadow-hover);
 }
 
 .lightbox-image.is-dragging {
@@ -437,28 +647,44 @@ body.lightbox-open {
 
 .lightbox-close {
   position: absolute;
+
   z-index: 10000;
+
   top: 24px;
   right: 20px;
+
   font-size: 2.5rem;
+
   color: white;
+
   cursor: pointer;
 }
 
 .lightbox-prev,
 .lightbox-next {
   z-index: 100000;
+
   position: absolute;
+
   backdrop-filter: blur(6px);
+
   top: 50%;
   transform: translateY(-50%);
+
   background: rgba(255, 255, 255, 0.1);
+
   border: none;
+
   font-size: 2rem;
+
   color: white;
+
   padding: 12px 16px;
+
   cursor: pointer;
+
   border-radius: 8px;
+
   transition: background 0.2s ease;
 }
 
@@ -476,7 +702,7 @@ body.lightbox-open {
 }
 
 /* ==========================
-   7. COMPONENT: Animations
+   Component: Animations
 ========================== */
 
 .fade {
@@ -494,21 +720,23 @@ body.lightbox-open {
 }
 
 /* ==========================
-   8. COMPONENT: Card
+   Component: Card
 ========================== */
 
 .card {
-  background-color: #fff;
+  background-color: var(--color-surface);
+
   border-radius: 16px;
 
-  box-shadow:
-    0 2px 6px rgba(0, 0, 0, 0.04),
-    0 8px 20px rgba(0, 0, 0, 0.06),
-    0 20px 40px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--color-border);
+
+  box-shadow: var(--shadow-soft);
 
   transition:
     transform 0.3s ease,
-    box-shadow 0.3s ease;
+    box-shadow 0.3s ease,
+    background-color var(--transition-base),
+    border-color var(--transition-base);
 }
 
 .audio-card {
@@ -518,11 +746,7 @@ body.lightbox-open {
 @media (hover: hover) {
   .card:hover {
     transform: translateY(-6px);
-
-    box-shadow:
-      0 6px 14px rgba(0, 0, 0, 0.06),
-      0 14px 35px rgba(0, 0, 0, 0.1),
-      0 30px 60px rgba(0, 0, 0, 0.14);
+    box-shadow: var(--shadow-hover);
   }
 
   .audio-card:hover {
@@ -537,9 +761,11 @@ body.lightbox-open {
 @media (max-width: 767px) {
   .slideshow-shell {
     grid-template-columns: 1fr 1fr;
+
     grid-template-areas:
       "slideshow slideshow"
       "prev next";
+
     gap: var(--space-sm);
   }
 
@@ -584,7 +810,7 @@ body.lightbox-open {
 }
 
 /* ==========================
-   9. MEDIA QUERY: Tablet
+   Media Query: Tablet
 ========================== */
 
 @media (min-width: 768px) {
@@ -645,7 +871,7 @@ body.lightbox-open {
 }
 
 /* ==========================
-   10. MEDIA QUERY: Desktop
+   Media Query: Desktop
 ========================== */
 
 @media (min-width: 1024px) {

@@ -1,0 +1,82 @@
+/* ==========================
+   Light Theme
+========================== */
+
+:root {
+  /* Spacing */
+  --space-xxs: 4px;
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-2xl: 64px;
+  --space-3xl: 96px;
+
+  /* Surfaces */
+  --color-bg: #f0eee9;
+  --color-surface: #ffffff;
+  --color-surface-alt: #e7e3dc;
+
+  /* Typography */
+  --color-text: #111111;
+  --color-text-muted: #525252;
+  --color-hero-text: #ffffff;
+
+  /* Accent */
+  --color-accent: #7499ff;
+  --color-accent-dark: #5a7ce6;
+
+  /* Hero */
+  --color-hero-overlay-start: rgba(0, 0, 0, 0.35);
+  --color-hero-overlay-end: rgba(0, 0, 0, 0.2);
+
+  /* UI */
+  --color-border: rgba(0, 0, 0, 0.08);
+  --color-overlay: rgba(0, 0, 0, 0.6);
+
+  /* Shadows */
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+  --shadow-hover: 0 18px 40px rgba(0, 0, 0, 0.12);
+
+  --shadow-text: 0 6px 25px rgba(0, 0, 0, 0.35);
+
+  /* Transitions */
+  --transition-base: 250ms ease;
+}
+
+/* ==========================
+   Dark Theme
+========================== */
+
+[data-theme="dark"] {
+  /* Backgrounds */
+  --color-bg: #0b1020;
+  --color-surface: #151c30;
+  --color-surface-alt: #1b243d;
+
+  /* Typography */
+  --color-text: #f5f7ff;
+  --color-text-muted: #b8c3de;
+  --color-hero-text: #f5f7ff;
+
+  /* Accent */
+  --color-accent: #8ba8ff;
+  --color-accent-dark: #6f8fff;
+
+  /* Hero */
+  --color-hero-overlay-start: rgba(5, 10, 24, 0.58);
+  --color-hero-overlay-end: rgba(5, 10, 24, 0.38);
+
+  /* UI */
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-overlay: rgba(0, 0, 0, 0.72);
+
+  /* Shadows */
+  --shadow-soft: 0 12px 35px rgba(0, 0, 0, 0.35);
+
+  --shadow-hover: 0 22px 50px rgba(0, 0, 0, 0.45);
+
+  --shadow-text: 0 8px 30px rgba(0, 0, 0, 0.55);
+}
